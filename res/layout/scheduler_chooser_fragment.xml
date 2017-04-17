@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="8dp" 
+    android:background= "@color/nitos_background_color" >
+      
+    
+    <TableLayout  
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:padding="8dp"
+          android:layout_marginBottom="10dp"
+          android:shrinkColumns="*"  
+          android:stretchColumns="*" 
+          android:background= "@color/nitos_background_color" >
+
+        
+      <TableRow
+           android:id="@+id/tableRow1"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="15dp"
+           android:gravity="center_horizontal" >
+      <TextView
+    	   android:id="@+id/textViewTitle"
+     	   android:layout_width="wrap_content"
+       	   android:layout_height="wrap_content"
+           android:layout_span="3"
+           android:text="@string/reserve_slice_title" 
+           style="@style/CustomFontStyleTitle"/>
+      </TableRow>
+
+      
+      
+      <TableRow
+           android:id="@+id/tableRow2"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="10dp">
+         <TextView
+    	   android:id="@+id/textViewLocalTimePrompt"
+     	   android:layout_width="wrap_content"
+       	   android:layout_height="wrap_content"
+           android:text="@string/textview_local_time" 
+           style="@style/CustomFontStyleText"/>
+         <TextView
+    	   android:id="@+id/textViewLocalTime"
+     	   android:layout_width="wrap_content"
+       	   android:layout_height="wrap_content"
+       	   android:layout_span="2"
+           style="@style/CustomFontStyleText"/>
+      </TableRow>
+  
+      <TableRow  
+            android:id="@+id/tableRow3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp" >
+       <TextView
+            android:id="@+id/textViewSlice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/slice_prompt"
+            style="@style/CustomFontStyleText"/>
+       
+        <Spinner
+            android:id="@+id/spinnerSlices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#dcdcdc"/>
+     </TableRow>
+ 	 
+      
+       <TableRow  
+            android:id="@+id/tableRow4"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp" >
+      
+       <TextView
+            android:id="@+id/textViewStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_date_prompt"
+            style="@style/CustomFontStyleText"/>
+ 
+       <TextView
+	        android:id="@+id/textDate"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    style="@style/CustomFontStyleText"/>
+         
+         <Button
+            android:id="@+id/buttonSelectDate"
+            android:layout_width="wrap_content"
+		    android:layout_height="40dp"
+	        android:text="@string/date_button_text"
+		    style="@style/btnStyleBeige"/>
+       </TableRow>
+       
+        <TableRow  
+            android:id="@+id/tableRow5"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp" >
+         
+         <TextView
+            android:id="@+id/textViewStartTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_time_prompt"
+            style="@style/CustomFontStyleText"/>
+ 
+         <TextView
+	    	android:id="@+id/textTime"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    style="@style/CustomFontStyleText"/>
+         
+        <Button
+            android:id="@+id/buttonSelectTime"
+            android:layout_width="wrap_content"
+		    android:layout_height="40dp"
+		    android:text="@string/time_button_text"
+		    style="@style/btnStyleBeige"/>
+      </TableRow>
+      
+     <TableRow  
+            android:id="@+id/tableRow6"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp" >   
+      <TextView
+            android:id="@+id/textViewDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/duration_prompt"
+            style="@style/CustomFontStyleText"/>
+   
+      <Spinner
+            android:id="@+id/spinnerDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            android:paddingLeft="20dp" />
+    </TableRow>
+   </TableLayout>
+   
+   <Button
+        android:id="@+id/btnCheckAvailableResources"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/custom_light_blue_button"
+        android:text="@string/buttonCheckNitosScheduler"
+        android:textColor="@color/white_color"/>    
+ 
+
+</RelativeLayout>

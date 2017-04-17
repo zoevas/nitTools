@@ -1,0 +1,45 @@
+{
+  "resource_response": {
+    "resources": [
+        {
+        "uuid": "f8020202-7c11-459c-89ee-4997bf9ad7e9",
+        "href": "/resources/f8020202-7c11-459c-89ee-4997bf9ad7e9",
+        "name": "testlease",
+        "account": {
+          "uuid": "962f4b0e-115f-4ad8-ae34-be5d8111d487",
+          "href": "/resources/962f4b0e-115f-4ad8-ae34-be5d8111d487",
+          "name": "ardadouk",
+          "account": {
+            "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "type": "account"
+          },
+          "type": "account"
+        },
+        "type": "Lease",
+        "components": [
+          {
+            "component": {
+              "uuid": "152187ce-23d6-4a7e-8863-3f6375ab0d37",
+              "href": "/resources/152187ce-23d6-4a7e-8863-3f6375ab0d37",
+              "name": "node016",
+              "type": "node"
+            }
+          },
+          {
+            "component": {
+              "uuid": "5d0681ad-c181-4859-875a-b99f34ab8efb",
+              "href": "/resources/5d0681ad-c181-4859-875a-b99f34ab8efb",
+              "name": "node016",
+              "type": "node"
+            }
+          }
+        ],
+        "valid_from": "2014-05-26T17:00:00+0300",
+        "valid_until": "2014-05-26T19:00:00+0300",
+        "status": "accepted"
+      }
+    ],
+    "about": "/resources/leases"
+  }
+}

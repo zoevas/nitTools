@@ -1,0 +1,513 @@
+{
+  "resource_response": {
+    "resources": [
+      {
+        "uuid": "152187ce-23d6-4a7e-8863-3f6375ab0d37",
+        "href": "/resources/152187ce-23d6-4a7e-8863-3f6375ab0d37",
+        "name": "node016",
+        "account": {
+          "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+          "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+          "type": "account"
+        },
+        "type": "node",
+	"hardware_type": "Icarus",
+        "leases": [
+          {
+            "lease": {
+              "uuid": "f8020202-7c11-459c-89ee-4997bf9ad7e9",
+              "href": "/resources/f8020202-7c11-459c-89ee-4997bf9ad7e9",
+              "name": "testlease",
+              "type": "Lease",
+              "valid_from": "2014-05-26 17:00:00 +0200",
+              "valid_until": "2014-05-26 19:00:00 +0200",
+              "status": "accepted"
+            }
+          }
+        ],
+        "interfaces": [
+          {
+            "uuid": "a562dcfd-e092-48c1-badb-8d2361b03abd",
+            "href": "/resources/a562dcfd-e092-48c1-badb-8d2361b03abd",
+            "name": "node016:if0",
+            "type": "interface",
+            "role": "control",
+            "mac": "00:03:1D:07:98:18",
+            "ip": {
+              "uuid": "417e0468-fb05-44a2-8d90-f99eed5c2b32",
+              "href": "/resources/417e0468-fb05-44a2-8d90-f99eed5c2b32",
+              "name": "r70083534334220",
+              "type": "ip",
+              "address": "10.0.1.16",
+              "netmask": "255.255.255.0",
+              "ip_type": "ipv4"
+            },
+            "description": "1 Gbps ethernet",
+            "domain": "omf:testserver",
+            "available": true,
+            "status": "unknown"
+          },
+          {
+            "uuid": "e49a4b17-2675-49f2-9be4-5c430d01d53c",
+            "href": "/resources/e49a4b17-2675-49f2-9be4-5c430d01d53c",
+            "name": "node016:if1",
+            "type": "interface",
+            "role": "experimental",
+            "mac": "00:03:1D:07:98:19",
+            "description": "1 Gbps ethernet",
+            "domain": "omf:testserver",
+            "available": true,
+            "status": "unknown"
+          }
+        ],
+        "exclusive": true,
+        "hostname": "node016",
+        "cmc": {
+          "uuid": "9915468c-1c9b-4118-baa3-889c25758a68",
+          "href": "/resources/9915468c-1c9b-4118-baa3-889c25758a68",
+          "name": "node2:cm",
+          "account": {
+            "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "type": "account"
+          },
+          "type": "chasismanagercard",
+          "mac": "09:A2:DA:0D:F1:01",
+          "ip": {
+            "uuid": "371eb9bb-0060-40c3-8dd2-bab0549a45bc",
+            "href": "/resources/371eb9bb-0060-40c3-8dd2-bab0549a45bc",
+            "name": "r70083533151640",
+            "type": "ip",
+            "address": "10.1.0.16",
+            "netmask": "255.255.255.0",
+            "ip_type": "ipv4"
+          },
+          "domain": "omf:testserver",
+          "available": true,
+          "status": "unknown"
+        },
+        "cpu": {
+          "uuid": "b7086925-f16d-4744-af26-45147bdc2aa7",
+          "href": "/resources/b7086925-f16d-4744-af26-45147bdc2aa7",
+          "name": "r70083533436460",
+          "type": "cpu",
+          "cpu_type": "Intel(R) Core(TM)2 Duo CPU P8400 @ 2.26GHz",
+          "cores": 2,
+          "threads": 2,
+          "cache_l1": "32 KB",
+          "cache_l2": "3 MB",
+          "domain": "omf:testserver",
+          "available": true,
+          "status": "unknown"
+        },
+        "ram": "1.8905 GB",
+        "ram_type": "DIMM Synchronous",
+        "hd_capacity": "59.6263 GB",
+        "domain": "omf:testserver",
+        "available": true,
+        "status": "unknown",
+        "provides": [
+          {
+            "uuid": "5d0681ad-c181-4859-875a-b99f34ab8efb",
+            "href": "/resources/5d0681ad-c181-4859-875a-b99f34ab8efb",
+            "name": "node016",
+            "account": {
+              "uuid": "962f4b0e-115f-4ad8-ae34-be5d8111d487",
+              "href": "/resources/962f4b0e-115f-4ad8-ae34-be5d8111d487",
+              "name": "ardadouk",
+              "account": {
+                "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+                "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+                "type": "account"
+              },
+              "type": "account"
+            },
+            "type": "node",
+            "leases": [
+              {
+                "lease": {
+                  "uuid": "f8020202-7c11-459c-89ee-4997bf9ad7e9",
+                  "href": "/resources/f8020202-7c11-459c-89ee-4997bf9ad7e9",
+                  "name": "testlease",
+                  "type": "Lease",
+                  "valid_from": "2014-05-26 17:00:00 +0200",
+                  "valid_until": "2014-05-26 19:00:00 +0200",
+                  "status": "accepted"
+                }
+              }
+            ],
+            "interfaces": [
+              {
+                "uuid": "a562dcfd-e092-48c1-badb-8d2361b03abd",
+                "href": "/resources/a562dcfd-e092-48c1-badb-8d2361b03abd",
+                "name": "node016:if0",
+                "type": "interface"
+              },
+              {
+                "uuid": "e49a4b17-2675-49f2-9be4-5c430d01d53c",
+                "href": "/resources/e49a4b17-2675-49f2-9be4-5c430d01d53c",
+                "name": "node016:if1",
+                "type": "interface"
+              }
+            ],
+            "exclusive": true,
+            "hostname": "node016",
+            "cmc": {
+              "uuid": "9915468c-1c9b-4118-baa3-889c25758a68",
+              "href": "/resources/9915468c-1c9b-4118-baa3-889c25758a68",
+              "name": "node2:cm",
+              "account": {
+                "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+                "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+                "type": "account"
+              },
+              "type": "chasismanagercard"
+            },
+            "cpu": {
+              "uuid": "b7086925-f16d-4744-af26-45147bdc2aa7",
+              "href": "/resources/b7086925-f16d-4744-af26-45147bdc2aa7",
+              "name": "r70083533436460",
+              "type": "cpu"
+            },
+            "ram": "1.8905 GB",
+            "ram_type": "DIMM Synchronous",
+            "hd_capacity": "59.6263 GB",
+            "domain": "omf:testserver",
+            "available": true,
+            "status": "unknown",
+            "provided_by": {
+              "uuid": "152187ce-23d6-4a7e-8863-3f6375ab0d37",
+              "href": "/resources/152187ce-23d6-4a7e-8863-3f6375ab0d37",
+              "name": "node016",
+              "account": {
+                "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+                "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+                "type": "account"
+              },
+              "type": "node",
+              "leases": [
+                {
+                  "lease": {
+                    "uuid": "f8020202-7c11-459c-89ee-4997bf9ad7e9",
+                    "href": "/resources/f8020202-7c11-459c-89ee-4997bf9ad7e9",
+                    "name": "testlease",
+                    "type": "Lease",
+                    "valid_from": "2014-05-26 17:00:00 +0200",
+                    "valid_until": "2014-05-26 19:00:00 +0200",
+                    "status": "accepted"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "uuid": "56668b18-df86-438b-ab5c-08782375cb08",
+        "href": "/resources/56668b18-df86-438b-ab5c-08782375cb08",
+        "name": "node002",
+        "account": {
+          "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+          "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+          "type": "account"
+        },
+        "type": "node",
+        "hardware_type": "Icarus",
+        "interfaces": [
+          {
+            "uuid": "47e06b5b-68c4-4807-942f-0a35fa7e8ca7",
+            "href": "/resources/47e06b5b-68c4-4807-942f-0a35fa7e8ca7",
+            "name": "node002:if0",
+            "type": "interface",
+            "role": "control",
+            "mac": "00:03:2D:08:41:C0",
+            "ip": {
+              "uuid": "abc50e0d-c561-4f79-8ec2-fd95bc5adb28",
+              "href": "/resources/abc50e0d-c561-4f79-8ec2-fd95bc5adb28",
+              "name": "r70083535411240",
+              "type": "ip",
+              "address": "10.0.1.2",
+              "netmask": "255.255.255.0",
+              "ip_type": "ipv4"
+            },
+            "description": "1 Gbps ethernet",
+            "domain": "omf:testserver",
+            "available": true,
+            "status": "unknown"
+          },
+          {
+            "uuid": "c11e9033-28c3-426a-8954-7880b26a8e42",
+            "href": "/resources/c11e9033-28c3-426a-8954-7880b26a8e42",
+            "name": "node002:if1",
+            "type": "interface",
+            "role": "experimental",
+            "mac": "00:03:1D:07:98:19",
+            "description": "1 Gbps ethernet",
+            "domain": "omf:testserver",
+            "available": true,
+            "status": "unknown"
+          }
+        ],
+        "exclusive": true,
+        "hostname": "node002",
+        "cmc": {
+          "uuid": "8c480497-0bef-4342-a7a7-2e5497088515",
+          "href": "/resources/8c480497-0bef-4342-a7a7-2e5497088515",
+          "name": "node2:cm",
+          "account": {
+            "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "type": "account"
+          },
+          "type": "chasismanagercard",
+          "mac": "09:A2:DA:0D:F0:02",
+          "ip": {
+            "uuid": "018c6eb4-54c9-43d4-ae73-7974ce054c20",
+            "href": "/resources/018c6eb4-54c9-43d4-ae73-7974ce054c20",
+            "name": "r70083531673780",
+            "type": "ip",
+            "address": "10.1.0.2",
+            "netmask": "255.255.255.0",
+            "ip_type": "ipv4"
+          },
+          "domain": "omf:testserver",
+          "available": true,
+          "status": "unknown"
+        },
+        "cpu": {
+          "uuid": "99cbec68-31d7-4c8e-ae11-9702f9e4444f",
+          "href": "/resources/99cbec68-31d7-4c8e-ae11-9702f9e4444f",
+          "name": "r25874560",
+          "type": "cpu",
+          "cpu_type": "VIA Esther processor 1000MHz",
+          "cores": 1,
+          "threads": 1,
+          "cache_l1": "32 KB",
+          "cache_l2": "0 MB",
+          "domain": "omf:testserver",
+          "available": true,
+          "status": "unknown"
+        },
+        "ram": "0.5 GB",
+        "ram_type": "DIMM",
+        "hd_capacity": "59.6263 GB",
+        "domain": "omf:testserver",
+        "available": true,
+        "status": "unknown"
+      },
+      {
+        "uuid": "926c609b-d95d-4184-81e0-b36c46aa37ea",
+        "href": "/resources/926c609b-d95d-4184-81e0-b36c46aa37ea",
+        "name": "node011",
+        "account": {
+          "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+          "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+          "type": "account"
+        },
+        "type": "node",
+        "hardware_type": "Grid",
+        "interfaces": [
+          {
+            "uuid": "13a03382-844c-409c-ba33-bad829d0d612",
+            "href": "/resources/13a03382-844c-409c-ba33-bad829d0d612",
+            "name": "node011:if0",
+            "type": "interface",
+            "role": "control",
+            "ip": {
+              "uuid": "abc50e0d-c561-4f79-8ec2-fd95bc5adb28",
+              "href": "/resources/abc50e0d-c561-4f79-8ec2-fd95bc5adb28",
+              "name": "r70083535411240",
+              "type": "ip"
+            },
+            "description": "1 Gbps ethernet",
+            "domain": "omf:testserver",
+            "available": true,
+            "status": "unknown"
+          },
+          {
+            "uuid": "2db5338f-ab16-4780-8000-fcf16dd93fde",
+            "href": "/resources/2db5338f-ab16-4780-8000-fcf16dd93fde",
+            "name": "node011:if1",
+            "type": "interface",
+            "role": "experimental",
+            "description": "1 Gbps ethernet",
+            "domain": "omf:testserver",
+            "available": true,
+            "status": "unknown"
+          }
+        ],
+        "exclusive": true,
+        "hostname": "node011",
+        "cmc": {
+          "uuid": "47bdf642-b161-451c-8a33-49832754266f",
+          "href": "/resources/47bdf642-b161-451c-8a33-49832754266f",
+          "name": "node2:cm",
+          "account": {
+            "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "type": "account"
+          },
+          "type": "chasismanagercard",
+          "mac": "09:A2:DA:0D:F0:11",
+          "ip": {
+            "uuid": "62e0d46b-c693-46f1-8328-2ffbb10a88a6",
+            "href": "/resources/62e0d46b-c693-46f1-8328-2ffbb10a88a6",
+            "name": "r19734940",
+            "type": "ip",
+            "address": "10.1.0.11",
+            "netmask": "255.255.255.0",
+            "ip_type": "ipv4"
+          },
+          "domain": "omf:testserver",
+          "available": true,
+          "status": "unknown"
+        },
+        "cpu": {
+          "uuid": "e4f08f4c-568c-4067-bc11-3abd17acac17",
+          "href": "/resources/e4f08f4c-568c-4067-bc11-3abd17acac17",
+          "name": "r70083533516080",
+          "type": "cpu",
+          "cpu_type": "AMD Geode LX800 @ 500 MHz",
+          "cores": 1,
+          "threads": 1,
+          "cache_l1": "0 KB",
+          "cache_l2": "0 MB",
+          "domain": "omf:testserver",
+          "available": true,
+          "status": "unknown"
+        },
+        "ram": "256 MB",
+        "ram_type": "DDR DRAM",
+        "hd_capacity": 0,
+        "domain": "omf:testserver",
+        "available": true,
+        "status": "unknown"
+      },
+      {
+        "uuid": "34420fc9-45fa-4dc6-a1ce-aa84e58ffb18",
+        "href": "/resources/34420fc9-45fa-4dc6-a1ce-aa84e58ffb18",
+        "name": "node048",
+        "account": {
+          "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+          "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+          "type": "account"
+        },
+        "type": "node",
+        "hardware_type": "Icarus",
+        "interfaces": [
+          {
+            "uuid": "5a0935ea-5ae5-4371-be12-fdbfec34f587",
+            "href": "/resources/5a0935ea-5ae5-4371-be12-fdbfec34f587",
+            "name": "node048:if0",
+            "type": "interface",
+            "role": "control",
+            "mac": "00:03:1D:0D:4B:D0",
+            "ip": {
+              "uuid": "cac7e582-3ce6-4847-a2ca-b518288f7c46",
+              "href": "/resources/cac7e582-3ce6-4847-a2ca-b518288f7c46",
+              "name": "r70083535619320",
+              "type": "ip",
+              "address": "10.0.1.48",
+              "netmask": "255.255.255.0",
+              "ip_type": "ipv4"
+            },
+            "description": "1 Gbps ethernet",
+            "domain": "omf:testserver",
+            "available": true,
+            "status": "unknown"
+          },
+          {
+            "uuid": "907bc1cb-7fb7-4741-bd8d-9bcf0ec836a2",
+            "href": "/resources/907bc1cb-7fb7-4741-bd8d-9bcf0ec836a2",
+            "name": "node048:if1",
+            "type": "interface",
+            "role": "experimental",
+            "mac": "00:03:1D:0D:4B:D1",
+            "description": "1 Gbps ethernet",
+            "domain": "omf:testserver",
+            "available": true,
+            "status": "unknown"
+          }
+        ],
+        "exclusive": true,
+        "hostname": "node048",
+        "cmc": {
+          "uuid": "3be235f0-17ad-45ae-8e9a-409adaca945d",
+          "href": "/resources/3be235f0-17ad-45ae-8e9a-409adaca945d",
+          "name": "node48:cm",
+          "account": {
+            "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "type": "account"
+          },
+          "type": "chasismanagercard",
+          "mac": "09:A2:DA:0D:F0:48",
+          "ip": {
+            "uuid": "3e97def6-4519-40b5-a38f-4f6c5b8d9722",
+            "href": "/resources/3e97def6-4519-40b5-a38f-4f6c5b8d9722",
+            "name": "r70083531789200",
+            "type": "ip",
+            "address": "10.1.0.48",
+            "netmask": "255.255.255.0",
+            "ip_type": "ipv4"
+          },
+          "domain": "omf:testserver",
+          "available": true,
+          "status": "unknown"
+        },
+        "cpu": {
+          "uuid": "9f56dd09-02eb-47b7-a512-f6853e2ca3bb",
+          "href": "/resources/9f56dd09-02eb-47b7-a512-f6853e2ca3bb",
+          "name": "r21955420",
+          "type": "cpu",
+          "cpu_type": "Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz",
+          "cores": 4,
+          "threads": 8,
+          "cache_l1": "32 KB",
+          "cache_l2": "8 MB",
+          "domain": "omf:testserver",
+          "available": true,
+          "status": "unknown"
+        },
+        "ram": "4 GB",
+        "ram_type": "DIMM DDR3 Synchronous 1600 MHz",
+        "hd_capacity": "111 GB",
+        "domain": "omf:testserver",
+        "available": true,
+        "status": "unknown"
+      },
+      {
+        "uuid": "5d0681ad-c181-4859-875a-b99f34ab8efb",
+        "href": "/resources/5d0681ad-c181-4859-875a-b99f34ab8efb",
+        "name": "node016",
+        "hardware_type": "Icarus",
+        "account": {
+          "uuid": "962f4b0e-115f-4ad8-ae34-be5d8111d487",
+          "href": "/resources/962f4b0e-115f-4ad8-ae34-be5d8111d487",
+          "name": "ardadouk",
+          "account": {
+            "uuid": "498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "href": "/resources/498c0b9c-df70-489f-913a-c5a35f9de06d",
+            "type": "account"
+          },
+          "type": "account"
+        },
+        "type": "node",
+        "leases": [
+          {
+            "lease": {
+              "uuid": "f8020202-7c11-459c-89ee-4997bf9ad7e9",
+              "href": "/resources/f8020202-7c11-459c-89ee-4997bf9ad7e9",
+              "name": "testlease",
+              "type": "Lease",
+              "valid_from": "2014-05-26 17:00:00 +0200",
+              "valid_until": "2014-05-26 19:00:00 +0200",
+              "status": "accepted"
+            }
+          }
+        ]
+      }
+    ],
+    "about": "/resources/nodes"
+  }
+}

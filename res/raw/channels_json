@@ -1,0 +1,37 @@
+{
+  "resource_response": {
+    "resources": [
+      {
+        "uuid": "cefdda53-1284-4170-98c8-0a3835c9cc70",
+        "href": "/resources/cefdda53-1284-4170-98c8-0a3835c9cc70",
+        "name": "1",
+        "account": {
+          "uuid": "db41aeed-3ff7-4f02-9836-6f5a13c88b9e",
+          "href": "/resources/db41aeed-3ff7-4f02-9836-6f5a13c88b9e",
+          "type": "account"
+        },
+        "type": "channel",
+        "frequency": "2.412GHz",
+        "domain": "omf:testserver",
+        "available": true,
+        "status": "unknown"
+      },
+      {
+        "uuid": "7ac444a7-96b0-4f08-a804-144792800f13",
+        "href": "/resources/7ac444a7-96b0-4f08-a804-144792800f13",
+        "name": "2",
+        "account": {
+          "uuid": "db41aeed-3ff7-4f02-9836-6f5a13c88b9e",
+          "href": "/resources/db41aeed-3ff7-4f02-9836-6f5a13c88b9e",
+          "type": "account"
+        },
+        "type": "channel",
+        "frequency": "2.417GHz",
+        "domain": "omf:testserver",
+        "available": true,
+        "status": "unknown"
+      }
+    ],
+    "about": "/resources/channels"
+  }
+}

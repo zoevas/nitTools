@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+      <!--   <item name="actionBarStyle">@style/MyActionBar</item>-->
+
+        <!-- Support library compatibility --> 
+        <item name="android:spinnerStyle">@style/SpinnerAppTheme</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemAppTheme</item>
+    
+    	<!-- set styles generated from http://jgilfelt.github.io/android-actionbarstylegenerator/ -->
+    	<item name="actionBarItemBackground">@drawable/selectable_background_nitos</item>
+        <item name="popupMenuStyle">@style/PopupMenu.Nitos</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Nitos</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Nitos</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.Nitos</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.Nitos</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_nitos</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_nitos</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Nitos</item>
+    
+    </style>
+
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+
+        <!-- Support library compatibility -->
+        <item name="titleTextStyle">@style/MyActionBarTitleText</item>
+          
+    </style>
+    
+    <!-- ActionBar title text -->
+    <style name="MyActionBarTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/actionbar_text_color</item>
+        <!-- The textColor property is backward compatible with the Support Library -->
+    </style>
+    
+    <!-- action bar styles generated from http://jgilfelt.github.io/android-actionbarstylegenerator/ -->
+
+   <style name="ActionBar.Solid.Nitos" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">@drawable/ab_solid_nitos</item>
+        <item name="backgroundStacked">@drawable/ab_stacked_solid_nitos</item>
+        <item name="backgroundSplit">@drawable/ab_bottom_solid_nitos</item>
+        <item name="progressBarStyle">@style/ProgressBar.Nitos</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Nitos" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="background">@drawable/ab_transparent_nitos</item>
+        <item name="progressBarStyle">@style/ProgressBar.Nitos</item>
+    </style>
+	
+    <style name="PopupMenu.Nitos" parent="@style/Widget.AppCompat.Light.PopupMenu">	
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_nitos</item>	
+    </style>
+	
+    <style name="DropDownListView.Nitos" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_nitos</item>
+    </style>
+
+    <style name="ActionBarTabStyle.Nitos" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_nitos</item>
+    </style>
+	
+    <style name="DropDownNav.Nitos" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">@drawable/spinner_background_ab_nitos</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_nitos</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_nitos</item>
+    </style>
+    
+    <style name="ProgressBar.Nitos" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_nitos</item>
+    </style>
+    
+    <style name="ActionButton.CloseMode.Nitos" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
+        <item name="android:background">@drawable/btn_cab_done_nitos</item>
+    </style>
+    
+ 
+
+    <style name="btnStyleBeige" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#5d6153</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_beige</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    
+    <style name="ThemeNoTitle" parent="Theme.AppCompat.Light">
+      <item name="android:windowNoTitle">true</item>
+    </style>
+    
+    <!-- Styles for text -->
+    <style name="CustomFontStyle">
+      <item name="android:layout_width">wrap_content</item>
+      <item name="android:layout_height">wrap_content</item>
+      <item name="android:typeface">sans</item>
+      <item name="android:textColor">@color/nitos_text_color</item>   
+   </style>
+   
+    <style name="CustomFontStyleTitle" parent="CustomFontStyle">
+     <item name="android:textSize">@dimen/menu_title_size</item>
+     <item name="android:textStyle">bold</item>
+    </style>
+    
+     <style name="CustomFontStyleText" parent="CustomFontStyle">
+      <item name="android:textSize">@dimen/text_size</item>
+    </style>
+    
+   <style name="SpinnerAppTheme" parent="android:Widget.Spinner">
+      <item name="android:background">@drawable/apptheme_spinner_background_holo_light</item>
+      <item name="android:dropDownSelector">@drawable/apptheme_list_selector_holo_light</item>
+   </style>
+
+   <style name="SpinnerDropDownItemAppTheme" parent="android:Widget.DropDownItem.Spinner">
+      <item name="android:checkMark">@drawable/apptheme_btn_radio_holo_light</item>
+   </style>
+   
+   
+  
+</resources>

@@ -1,0 +1,62 @@
+<resources>
+
+    <!--
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- <item name="android:actionBarStyle">@style/MyActionBar</item>-->
+      
+        <!-- API 14 theme customizations can go here. -->
+       <!--   <item name="actionBarStyle">@style/MyActionBar</item>-->
+       <item name="android:actionBarItemBackground">@drawable/selectable_background_nitos</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Nitos</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Nitos</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Nitos</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Nitos</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Nitos</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_nitos</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_nitos</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Nitos</item>
+        
+    </style>
+
+    
+    
+    <style name="MyActionBar"
+           parent="@style/Widget.AppCompat.Light.ActionBar">
+    
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+ 
+        <!-- Support library compatibility -->
+        <item name="titleTextStyle">@style/MyActionBarTitleText</item>
+    </style>
+    
+    <!-- ActionBar title text -->
+    <style name="MyActionBarTitleText"
+           parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/actionbar_text_color</item>
+        <!-- The textColor property is backward compatible with the Support Library -->
+    </style>
+
+    
+    <!-- actionbar generated from http://jgilfelt.github.io/android-actionbarstylegenerator/ -->
+    <style name="ActionBar.Solid.Nitos" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@drawable/ab_solid_nitos</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_nitos</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_nitos</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Nitos</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Nitos" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_nitos</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Nitos</item>
+    </style>
+    
+    
+    <style name="ThemeNoTitle" parent="Theme.AppCompat.Light">
+      <item name="android:windowNoTitle">true</item>
+    </style>
+    
+</resources>

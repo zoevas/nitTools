@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.nitos.testbed.tools.MainMenuActivity" >
+    
+  <item android:id="@+id/action_user_reservations"
+          android:icon="@drawable/ic_user_reservations"
+          android:title="@string/action_user_reservations"
+           app:showAsAction="ifRoom"/>
+  
+  
+   <item android:id="@+id/action_overflow"
+          android:icon="@drawable/ic_action_overflow"
+          android:title="@string/action_overflow"
+          app:showAsAction="always">
+         <menu>
+          <item
+      		  android:id="@+id/logout"
+       		  android:title="@string/logout"
+        	  android:showAsAction="ifRoom"/>
+          </menu>
+   </item>
+</menu>

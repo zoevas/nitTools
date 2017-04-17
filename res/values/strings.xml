@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NitosTools</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_user_reservations">See user reservations</string>
+    <string name="action_overflow">Action verflow</string>
+   
+    
+    <!-- String resources for Login Screen Activity -->
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="keep_me_signed_in">Keep me signed in</string>
+    <string name="signin">Sign in</string>
+    <string name="nitlab_image">nitlab image</string>
+    <string name="title_activity_login_screen">Nitos Tools</string>
+    <string name="logout">Log out</string>
+  
+    <!-- String resources for Main Menu Activity -->
+    <string name="menu_item_nitos_scheduler">Nitos Scheduler</string>
+    <string name="menu_item_connectivity_tool">Connectivity Tool</string>
+    <string name="menu_item_node_distance_tool">Nodes Distance Tool</string>
+    <string name="menu_item_openflow_settings">Openflow Settings</string>
+    <string name="menu_item_measurement_map_depiction">Measurement Map Depiction</string>
+    <string name="menu_item_testbed_status">Testbed Status</string>
+    <string name="menu_item_cm_framework">CM Framework</string>
+    <string name="menu_item_usb_sensors_toolkit">USB Sensors Toolkit</string>
+    <string name="title_activity_nitos_scheduler">NitosSchedulerActivity</string>
+
+    <!-- String resources for NitosSchedulerActivity -->
+    <string name="slice_prompt">Slice:</string>
+    <string name="start_date_prompt">Start Date:</string>
+    <string name="start_time_prompt">Start time:</string>
+    <string name="duration_prompt">Duration:</string>
+    <string name="selectdate">Select date</string>
+    <string name="textview_local_time">Local Date Time:</string>
+    
+    <string name="title_activity_my_reservations">MyReservationsActivity</string>
+
+    <string name="buttonCheckNitosScheduler">Check Available Resources</string>
+    <string name="reserve_slice_title">Select Slice, Start Time and Duration</string>
+    
+    <string name="settings_dob_not_set">No Date Set</string>
+    <string name="date_button_text">Pick a date</string>
+    <string name="time_button_text">Pick time</string>
+    <string name="tabname_selection_menu">Select</string>
+    <string name="tabname_outdoor_testbed">Outdoor</string>
+    <string name="outdoor_testbed">outdoor testbed</string>
+    <string name="tabname_indoor_testbed">Indoor</string>
+    <string name="indoor_testbed">Indoor testbed</string>
+
+    <!-- Strings for AvailableNodesFragment fragment -->
+    <string name="orbit_nodes">Orbit</string>
+    <string name="grid_nodes">Grid</string>
+    <string name="usrp_nodes">USRP</string>
+    <string name="diskless_nodes">Diskless</string>
+    <string name="icarus_nodes">Icarus</string>
+    <string name="base_station">Base Station</string>
+    <string name="channels_802_11a">Channels 802.11a</string>
+    <string name="channels_802_11bg">Channels 802.11b/g</string>
+       
+    <!-- Strings for ReserveNodesFragment fragment -->
+      <string name="success_reserve_message">Your Nodes and your Frequencies have been booked! Check My Reservations!</string>
+  
+</resources>

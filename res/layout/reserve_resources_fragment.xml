@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/nitos_background_color">
+    
+    <TextView
+    	   android:id="@+id/successReserveMessage"
+     	   android:layout_width="fill_parent"
+       	   android:layout_height="fill_parent"
+       	   android:layout_marginTop="30dp"
+       	   android:layout_marginLeft="8dp"
+           android:text="@string/success_reserve_message"
+           style="@style/CustomFontStyleText"/>
+    
+</RelativeLayout>

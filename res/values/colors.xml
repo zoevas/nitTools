@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="nitos_text_color">#F5FFFA</color>
+    <color name="nitos_background_color"> #305086</color>
+    <color name="actionbar_text_color">#E6BC7F</color>
+    <color name="white_color">#FFFFFF</color>
+    <color name="light_blue_color">#738CB7</color>
+    <color name="intense_blue_color">#33B5E5</color>
+</resources>
