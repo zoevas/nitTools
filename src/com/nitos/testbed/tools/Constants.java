@@ -25,8 +25,8 @@ public class Constants {
   	 }
 	
 	//TAGS for get JSON Objects and Arrays
-    public static final String TAG_RESOURCE_RESPONSE = "resource_response";
-    public static final String TAG_RESOURCES= "resources";
-    public static final String TAG_COMPONENTS= "components";
-    public static final String TAG_COMPONENT= "component";
+	public static final String TAG_RESOURCE_RESPONSE = "resource_response";
+	public static final String TAG_RESOURCES= "resources";
+	public static final String TAG_COMPONENTS= "components";
+	public static final String TAG_COMPONENT= "component";
 }
