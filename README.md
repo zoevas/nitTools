@@ -12,7 +12,7 @@ both ways.
 ![alt tag](https://github.com/zoevas/nitTools/blob/master/System%20architecture.png)
 
 
-
+## System Architecture
 
 NitosTools consists of four activities:
 - LoginScreenActivity: validates the user.
@@ -43,3 +43,6 @@ and making GET and POST requests.
 - GlobalData: This class contains all the global data for the application
 - Reservation: This class contains information(date and time) for a reservation.
 - Constants: Constants class is responsible for all the constants of the application.
+
+## Screenshots
+![alt tag](https://github.com/zoevas/nitTools/blob/master/System%20architecture.png)
