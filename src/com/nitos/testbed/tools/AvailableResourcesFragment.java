@@ -233,81 +233,80 @@ public class AvailableResourcesFragment extends Fragment  implements OnClickList
 		editor.commit();
 	}
 	 
-	 	@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			switch (v.getId()) {
-	        case R.id.btnReserveNodes:
- 		 		 
- 		 	    final FragmentTransaction ft = getFragmentManager().beginTransaction(); 
-	            ft.replace(R.id.layoutToReplace_nitosScheduler, new ReserveResourcesFragment()); 
-	            //ft.addToBackStack(null);
-	            ft.commit();
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+			case R.id.btnReserveNodes: 
+				final FragmentTransaction ft = getFragmentManager().beginTransaction(); 
+				ft.replace(R.id.layoutToReplace_nitosScheduler, new ReserveResourcesFragment()); 
+				//ft.addToBackStack(null);
+				ft.commit();
 	            
- 		 		 Log.i("Available Nodes","reserve button");
-	        	break;
+				Log.i("Available Nodes","reserve button");
+				break;
 			}
-	 	}
+		}
 		
 
-	 	/* Each time a listview item is checked, this function is called to check which resources are available*/
-	 	public void checkAvailableResources(Constants.HardwareType hwType){
+	/* Each time a listview item is checked, this function is called to check which resources are available*/
+	public void checkAvailableResources(Constants.HardwareType hwType){
 	 	
-	 		switch(hwType){
+		switch(hwType){
 	 	
-	 		   case ORBIT:
-	 			   Log.i("Check Available Nodes","Orbit Nodes");
-	 			   HashMap<String, ResourcesData> orbitNodes = appState.getOrbitNodes();
-	 			   appState.clearOrbitAvailableNodes();
+			case ORBIT:
+				Log.i("Check Available Nodes","Orbit Nodes");
+				HashMap<String, ResourcesData> orbitNodes = appState.getOrbitNodes();
+				appState.clearOrbitAvailableNodes();
 	 		
-	 			   for (Map.Entry<String, ResourcesData>entry:orbitNodes.entrySet()) {
-	 				   Log.i("Available Nodes", "" + entry.getKey());
+				for (Map.Entry<String, ResourcesData>entry:orbitNodes.entrySet()) {
+					Log.i("Available Nodes", "" + entry.getKey());
 	 				   
-	 				   ResourcesData resourcesData = entry.getValue();
-	 				   ArrayList<Reservation> reservations = resourcesData.getReservations();
+					ResourcesData resourcesData = entry.getValue();
+					ArrayList<Reservation> reservations = resourcesData.getReservations();
 	 				   
-	 				   boolean available = true;
+					boolean available = true;
 	 				   
-	 				   for(int i = 0; i < reservations.size(); i++){
-	 					   Reservation reservation_i = reservations.get(i);
-	 					   available = intersectDateIntervals(reservation_i);
-	 					   if(!available)
-	 						      break; 
-	 				   }
+					for(int i = 0; i < reservations.size(); i++){
+						Reservation reservation_i = reservations.get(i);
+						available = intersectDateIntervals(reservation_i);
+						if(!available)
+							break; 
+					}
 	 				
-	 				  //if the resource is available add it to the OrbitAvailableNodes 
-	 				  if(available) {
-	 					 String node_name = entry.getKey();
-	 					 String uuid = resourcesData.getUUID();
-	 				     appState.setOrbitAvailableNodes(node_name, uuid);
+					//if the resource is available add it to the OrbitAvailableNodes 
+					if(available) {
+						String node_name = entry.getKey();
+						String uuid = resourcesData.getUUID();
+						appState.setOrbitAvailableNodes(node_name, uuid);
 	 				  }
 	 			   }
 
-	 			   break;	
+				 break;	
 	 		  case GRID:
 	 			   Log.i("Check Available Nodes","Grid Nodes");
 	 			   HashMap<String, ResourcesData> gridNodes = appState.getGridNodes();
 	 			   appState.clearGridAvailableNodes();
 	 		
 	 			   for (Map.Entry<String, ResourcesData>entry:gridNodes.entrySet()) {
-	 				   Log.i("Available Nodes", "" + entry.getKey());
+					Log.i("Available Nodes", "" + entry.getKey());
 	 				   
-	 				   ResourcesData resourcesData = entry.getValue();
-	 				   ArrayList<Reservation> reservations = resourcesData.getReservations();
+					ResourcesData resourcesData = entry.getValue();
+	 				ArrayList<Reservation> reservations = resourcesData.getReservations();
 	 				   
-	 				   boolean available = true;
+					boolean available = true;
 	 				   
-	 				   for(int i = 0; i < reservations.size(); i++){
-	 					   Reservation reservation_i = reservations.get(i);
-	 					   available = intersectDateIntervals(reservation_i);
-	 					   if(!available)
-	 						      break; 
-	 				   }
+					for(int i = 0; i < reservations.size(); i++){
+						Reservation reservation_i = reservations.get(i);
+						available = intersectDateIntervals(reservation_i);
+						if(!available)
+							break; 
+	 				  }
 	 				   
 	 				  if(available) {
-	 					 String node_name = entry.getKey();
-	 					 String uuid = resourcesData.getUUID();
-	 				     appState.setGridAvailableNodes(node_name, uuid);
+				String node_name = entry.getKey();
+							String uuid = resourcesData.getUUID();
+							appState.setGridAvailableNodes(node_name, uuid);
 	 				  }
 	 			   }
 
