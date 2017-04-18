@@ -20,109 +20,111 @@ import android.widget.LinearLayout;
   keeps their state.*/
 public class CheckResourcesFragment extends Fragment {
 	
-	 GlobalData appState;
+	GlobalData appState;
 	
-	 SharedPreferences nodesSharedPreferences;
+	SharedPreferences nodesSharedPreferences;
 	 
-	 LinearLayout checkNodesView;
-	 Constants.HardwareType resource_type;
+	LinearLayout checkNodesView;
+	Constants.HardwareType resource_type;
 	 
-	 public TreeMap<String, String> currentFragmentNodes;
+	public TreeMap<String, String> currentFragmentNodes;
 	 
-	 public void onCreate(Bundle savedInstanceState){
-		 super.onCreate(savedInstanceState);
-		 Log.i("CheckNodesFragment","onCreate");
-		 //This initialization may be needed in the onCreateView
-		 appState = ((GlobalData)getActivity().getApplicationContext());
-		 nodesSharedPreferences =  getActivity().getSharedPreferences(Constants.CHECKBOXES_PREFERENCES,    Context.MODE_PRIVATE);
-	 }
+	public void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		Log.i("CheckNodesFragment","onCreate");
+		//This initialization may be needed in the onCreateView
+		appState = ((GlobalData)getActivity().getApplicationContext());
+		nodesSharedPreferences =  getActivity().getSharedPreferences(Constants.CHECKBOXES_PREFERENCES,    Context.MODE_PRIVATE);
+	}
 	 
 	
-	 @Override
-	 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-	      Log.i("CheckNodesFragment","onCreateView");
-		  checkNodesView =  (LinearLayout)inflater.inflate(R.layout.check_resources_fragment, container, false);
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		Log.i("CheckNodesFragment","onCreateView");
+		checkNodesView =  (LinearLayout)inflater.inflate(R.layout.check_resources_fragment, container, false);
 
-		 return checkNodesView;
-	 }
+		return checkNodesView;
+	}
 	 
 	 
 	//We get the resource type via the bundle
-	 public void onResume(){
-		  super.onResume();
-		  Log.i("CheckNodesFRagment","onResume");
+	public void onResume(){
+		super.onResume();
+		Log.i("CheckNodesFRagment","onResume");
 	
-		  Bundle b = getArguments();
+		Bundle b = getArguments();
 	 		
-	 	  resource_type = Constants.HardwareType.valueOf(b.getString("resource_type"));
+		resource_type = Constants.HardwareType.valueOf(b.getString("resource_type"));
 	 	  
-	 	  setCheckBoxes(resource_type);
+		setCheckBoxes(resource_type);
 		  
-	  }	 
+	}	 
 	 
-	 /* It displays the checkboxes of the selected listview item keeping their state.*/
-	 public void setCheckBoxes(Constants.HardwareType resource_type){
-		 switch (resource_type)	{
-		     case ORBIT:{
-		            appState.clearOrbitCheckBoxes();
-		    	    currentFragmentNodes = appState.getOrbitAvailableNodes();
-		    	    Set<String> keys = currentFragmentNodes.keySet();
+	/* It displays the checkboxes of the selected listview item keeping their state.*/
+	public void setCheckBoxes(Constants.HardwareType resource_type){
+		switch (resource_type)	{
+			case ORBIT:{
+				appState.clearOrbitCheckBoxes();
+				currentFragmentNodes = appState.getOrbitAvailableNodes();
+				Set<String> keys = currentFragmentNodes.keySet();
 		    
-		    	    LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
-		    	    int checkBoxIndex = 0;
-		    	    for(String key: keys){
-		    	    	String node_name = key;
+				LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
+				int checkBoxIndex = 0;
+			
+				for(String key: keys){
+					String node_name = key;
 		    	    	
-		    	    	appState.setOrbitCheckBoxes(new CheckBox(checkNodesView.getContext()));
-			        	appState.setOrbitCheckBoxesText(checkBoxIndex, node_name);
+					appState.setOrbitCheckBoxes(new CheckBox(checkNodesView.getContext()));
+					appState.setOrbitCheckBoxesText(checkBoxIndex, node_name);
 			        	
-			        	//Restore the CheckBoxes state
-			        	if (nodesSharedPreferences.contains(node_name)) {
+					//Restore the CheckBoxes state
+					if (nodesSharedPreferences.contains(node_name)) {
 				        	boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
 				        
-				        	if (checkBoxValue) {
-				        		appState.getOrbitCheckBoxes().get(checkBoxIndex).setChecked(true);
-				        	} else {
-				        		appState.getOrbitCheckBoxes().get(checkBoxIndex).setChecked(false);
-				        	}
-				        }
+							if (checkBoxValue) {
+								appState.getOrbitCheckBoxes().get(checkBoxIndex).setChecked(true);
+							} else {
+								appState.getOrbitCheckBoxes().get(checkBoxIndex).setChecked(false);
+							}
+					}
 			        
-				       ll.addView(appState.getOrbitCheckBoxes().get(checkBoxIndex));
-				       checkBoxIndex++;
-		    	    }
+					ll.addView(appState.getOrbitCheckBoxes().get(checkBoxIndex));
+					checkBoxIndex++;
+				}
 		    	    
-		    	 break;
-		     }
-		     case GRID:{
-		            appState.clearGridCheckBoxes();
-		    	    currentFragmentNodes = appState.getGridAvailableNodes();
-		    	    Set<String> keys = currentFragmentNodes.keySet();
+				break;
+			}
+			case GRID:{
+				appState.clearGridCheckBoxes();
+				currentFragmentNodes = appState.getGridAvailableNodes();
+				Set<String> keys = currentFragmentNodes.keySet();
 		    
-		    	    LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
-		    	    int checkBoxIndex = 0;
-		    	    for(String key: keys){
-		    	    	String node_name = key;
+				LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
+				int checkBoxIndex = 0;
+				
+				for(String key: keys){
+					String node_name = key;
 		    	    	
-		    	    	appState.setGridCheckBoxes(new CheckBox(checkNodesView.getContext()));
-			        	appState.setGridCheckBoxesText(checkBoxIndex, node_name);
+					appState.setGridCheckBoxes(new CheckBox(checkNodesView.getContext()));
+					appState.setGridCheckBoxesText(checkBoxIndex, node_name);
 			        	
-			        	//Restore the CheckBoxes state
-			        	if (nodesSharedPreferences.contains(node_name)) {
-				        	boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
+					//Restore the CheckBoxes state
+					if (nodesSharedPreferences.contains(node_name)) {
+						boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
 				        
-				        	if (checkBoxValue) {
-				        		appState.getGridCheckBoxes().get(checkBoxIndex).setChecked(true);
-				        	} else {
-				        		appState.getGridCheckBoxes().get(checkBoxIndex).setChecked(false);
-				        	}
-				        }
+						if (checkBoxValue) {
+							appState.getGridCheckBoxes().get(checkBoxIndex).setChecked(true);
+						} else {
+							appState.getGridCheckBoxes().get(checkBoxIndex).setChecked(false);
+						}
+					}
 			        
-				       ll.addView(appState.getGridCheckBoxes().get(checkBoxIndex));
-				       checkBoxIndex++;
-		    	    }
+					ll.addView(appState.getGridCheckBoxes().get(checkBoxIndex));
+					checkBoxIndex++;
+				}
 		    	    
-		    	 break;
-		     }
+				break;
+			}
 		     case USRP:{
 		    	    appState.clearUsrpCheckBoxes();
 		    	    currentFragmentNodes = appState.getUsrpAvailableNodes();
