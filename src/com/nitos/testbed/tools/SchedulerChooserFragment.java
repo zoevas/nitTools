@@ -276,122 +276,110 @@ public  class SchedulerChooserFragment extends Fragment   implements OnClickList
 							jsonParser.setNodes(jsonNodesStr);
 						}
 						else {
-Log.e("ServiceHandler", "Couldn't get any data from the url");
-		    		   		}
+							Log.e("ServiceHandler", "Couldn't get any data from the url");
+						}
 		    		   		
-		    		   		if(jsonChannelsStr != null) {
-		    		   			jsonParser.setChannels(jsonChannelsStr);
-		    		   		}
-		    		   		else {
-		    		   			Log.e("ServiceHandler", "Couldn't get any data from the url");
-		    		   		}
+						if(jsonChannelsStr != null) {
+							jsonParser.setChannels(jsonChannelsStr);
+						} else {
+							Log.e("ServiceHandler", "Couldn't get any data from the url");
+						}
 		    		   		
-		    		   		if (jsonLeasesStr != null) {
-		    		   		    jsonParser.setLeases(jsonLeasesStr);	    		   		
-		    		   		} else {
-		    		   			Log.e("ServiceHandler", "Couldn't get any data from the url");
-		    		   		}
+						if (jsonLeasesStr != null) {
+							jsonParser.setLeases(jsonLeasesStr);	    		   		
+						} else {
+							Log.e("ServiceHandler", "Couldn't get any data from the url");
+					}
 		    		   		
-		    		   } catch (JSONException e) {
-		    		   		
-				   			e.printStackTrace();
-			   		   }
-		    		   
-		             
-		    		   return null; 
-		    	   }
+				} catch (JSONException e) {	
+					e.printStackTrace();
+				}
+				return null; 
+			}
 		    	   
-		    	   //After taking all the information of the resources, we call the AvailableResourcesFragment
-		    	   protected void onPostExecute(final Void unused) {
-		    		    progressDialog.dismiss();
-		    		   
-		    		    final FragmentTransaction ft = getFragmentManager().beginTransaction(); 
-			            ft.replace(R.id.layoutToReplace_nitosScheduler, new AvailableResourcesFragment()); 
-			            ft.addToBackStack(null);
-			            ft.commit();
-		    	   }
+			//After taking all the information of the resources, we call the AvailableResourcesFragment
+			protected void onPostExecute(final Void unused) {
+				progressDialog.dismiss();
+				final FragmentTransaction ft = getFragmentManager().beginTransaction(); 
+				ft.replace(R.id.layoutToReplace_nitosScheduler, new AvailableResourcesFragment()); 
+				ft.addToBackStack(null);
+				ft.commit();
+			}
 		    	   
 		    
 		    	   
-		    }
+		}
 			
 		
 		    
 		    
 		    
-		    private class JSONTestbedParser {
+		private class JSONTestbedParser {
 		    	
-		    	public void setNodes(String jsonNodesStr) throws JSONException  {
-		    		 	JSONObject jsonNodesObj = new JSONObject(jsonNodesStr);
+			public void setNodes(String jsonNodesStr) throws JSONException  {
+				JSONObject jsonNodesObj = new JSONObject(jsonNodesStr);
 		    		
-		    		 	JSONObject resource_response_obj = jsonNodesObj.getJSONObject(Constants.TAG_RESOURCE_RESPONSE);
+				JSONObject resource_response_obj = jsonNodesObj.getJSONObject(Constants.TAG_RESOURCE_RESPONSE);
 				
-						JSONArray resources = resource_response_obj.getJSONArray(Constants.TAG_RESOURCES);
+				JSONArray resources = resource_response_obj.getJSONArray(Constants.TAG_RESOURCES);
 		          			
-						Log.i("JSONTestbedParser", "set Nodes");
+				Log.i("JSONTestbedParser", "set Nodes");
 					
-						ArrayList<String> check_for_node_names_duplicates = new ArrayList<String>();
-						// looping through All
-					    for (int node_i = 0; node_i < resources.length(); node_i++) {
-					    	JSONObject nodeObj = resources.getJSONObject(node_i);
+				ArrayList<String> check_for_node_names_duplicates = new ArrayList<String>();
+				// looping through All
+				for (int node_i = 0; node_i < resources.length(); node_i++) {
+					JSONObject nodeObj = resources.getJSONObject(node_i);
 							
-							Log.i("JSONTestbedParser node name", nodeObj.getString("name"));
+					Log.i("JSONTestbedParser node name", nodeObj.getString("name"));
 							
-							String hardware_type = nodeObj.getString("hardware_type");
-					        String node_name = nodeObj.getString("name");
-							String uuid = nodeObj.getString("uuid");
+					String hardware_type = nodeObj.getString("hardware_type");
+					String node_name = nodeObj.getString("name");
+					String uuid = nodeObj.getString("uuid");
 							
-							//A node can be contained two times 
-							if(check_for_node_names_duplicates.contains(node_name)){
-						    	Log.w("duplicate node","");
-						    	continue;
-						    }
-						    else{
-						    	check_for_node_names_duplicates.add(node_name);
-						    }
+					//A node can be contained two times 
+					if(check_for_node_names_duplicates.contains(node_name)){
+						Log.w("duplicate node","");
+						continue;
+					} else {
+						check_for_node_names_duplicates.add(node_name);
+					}
 					       
-                            if(hardware_type.equals("PC-Orbit")){
-                            	Log.i("JSONParser setNodes", "orbitNodes");
-                            	ResourcesData resourcesData = new ResourcesData(uuid);
-								appState.getOrbitNodes().put(node_name, resourcesData);
-							}
-							else if(hardware_type.equals("PC-Grid")){
-								Log.i("JSONParser setNodes", "gridNodes");
-								ResourcesData resourcesData = new ResourcesData(uuid);
-								appState.getGridNodes().put(node_name, resourcesData);
-								
-							}
-							else if(hardware_type.equals("PC-USRP")){
-								Log.i("JSONParser setNodes", "usrpNodes");
-								ResourcesData resourcesData = new ResourcesData(uuid);
-								appState.getUsrpNodes().put(node_name, resourcesData);
-							}
-							else if(hardware_type.equals("PC-Diskless")){
-								Log.i("JSONParser setNodes", "disklessNodes");
-								ResourcesData resourcesData = new ResourcesData(uuid);
-								appState.getDisklessNodes().put(node_name, resourcesData);
-							}
-							else if(hardware_type.equals("PC-Icarus")) {	
-								Log.i("JSONParser setNodes", "icarus");
-								ResourcesData resourcesData = new ResourcesData(uuid);
-								appState.getIcarusNodes().put(node_name, resourcesData);
-							}
-							else if(hardware_type.equals("PC-BaseStations")) {	
-								Log.i("JSONParser setNodes", "Base Stations");
-								ResourcesData resourcesData = new ResourcesData(uuid);
-								appState.getBaseStations().put(node_name, resourcesData);
-							}
-							else {
-								Log.w("Hardware Type", "unknown");
-							}
+					if(hardware_type.equals("PC-Orbit")){
+						Log.i("JSONParser setNodes", "orbitNodes");
+						ResourcesData resourcesData = new ResourcesData(uuid);
+						appState.getOrbitNodes().put(node_name, resourcesData);
+					} else if (hardware_type.equals("PC-Grid")){
+						Log.i("JSONParser setNodes", "gridNodes");
+						ResourcesData resourcesData = new ResourcesData(uuid);
+						appState.getGridNodes().put(node_name, resourcesData);
+					} else if (hardware_type.equals("PC-USRP")){
+						Log.i("JSONParser setNodes", "usrpNodes");
+						ResourcesData resourcesData = new ResourcesData(uuid);
+						appState.getUsrpNodes().put(node_name, resourcesData);
+					} else if (hardware_type.equals("PC-Diskless")){
+						Log.i("JSONParser setNodes", "disklessNodes");
+						ResourcesData resourcesData = new ResourcesData(uuid);
+						appState.getDisklessNodes().put(node_name, resourcesData);
+					} else if (hardware_type.equals("PC-Icarus")) {	
+						Log.i("JSONParser setNodes", "icarus");
+						ResourcesData resourcesData = new ResourcesData(uuid);
+						appState.getIcarusNodes().put(node_name, resourcesData);
+					} else if (hardware_type.equals("PC-BaseStations")) {	
+						Log.i("JSONParser setNodes", "Base Stations");
+						ResourcesData resourcesData = new ResourcesData(uuid);
+						appState.getBaseStations().put(node_name, resourcesData);
+					} else {
+						Log.w("Hardware Type", "unknown");
+					}
 			
-						}	   		
+				}	   		
 		    		
-		    	}	 
+			}	 
 		    	
-		    	public void setChannels(String jsonChannelsStr) throws JSONException  {
+			
+			public void setChannels(String jsonChannelsStr) throws JSONException  {
 		    	
-		    		JSONObject jsonChannelsObj = new JSONObject(jsonChannelsStr);
+JSONObject jsonChannelsObj = new JSONObject(jsonChannelsStr);
 		    		
 	    		 	JSONObject resource_response_obj = jsonChannelsObj.getJSONObject(Constants.TAG_RESOURCE_RESPONSE);
 			
