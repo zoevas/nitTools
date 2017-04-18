@@ -38,16 +38,16 @@ public  class SchedulerChooserFragment extends Fragment   implements OnClickList
 		View schedulerChooserView;
 		TextView textDisplayTime;
 		TextView textDisplayDate;
-		    
+	    
 		Spinner spinnerDuration;
 		    
-	    //HashMaps and Arraylists for Nodes have been declared globally in GlobalData class
-	    GlobalData appState;
+		//HashMaps and Arraylists for Nodes have been declared globally in GlobalData class
+		GlobalData appState;
 
-	    public final static int GET = 1;
+		public final static int GET = 1;
 	    
 		
-	    @Override
+	 	@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 	    	
@@ -115,144 +115,139 @@ public  class SchedulerChooserFragment extends Fragment   implements OnClickList
 	    	       
 		// display current date
 		public void showCurrentDateOnView() {
-textDisplayDate = (TextView) schedulerChooserView.findViewById(R.id.textDate);
+			textDisplayDate = (TextView) schedulerChooserView.findViewById(R.id.textDate);
 	
-	 		   // Use the current date as the default date in the picker
-		        DateTime dt = new DateTime();
-		        int day = dt.getDayOfMonth();
-		        int year = dt.getYear();
-		        int month = dt.getMonthOfYear();
+			// Use the current date as the default date in the picker
+			DateTime dt = new DateTime();
+			int day = dt.getDayOfMonth();
+			int year = dt.getYear();
+			int month = dt.getMonthOfYear();
 		        
-		        Log.i("Scheduler Chooser Fragment day month year", day +" "+ month + " "+ year + "");
+			Log.i("Scheduler Chooser Fragment day month year", day +" "+ month + " "+ year + "");
 		        
-		        //Initiate LocalDate dateUserFrom in GlobalData
-		        appState.setDateUserFrom(year, month, day);
+			//Initiate LocalDate dateUserFrom in GlobalData
+			appState.setDateUserFrom(year, month, day);
 		        
-	 		    // set current date into textview
-	 			textDisplayDate.setText(year +"-"+ String.format("%02d", month) +"-" + String.format("%02d", day));
+			// set current date into textview
+			textDisplayDate.setText(year +"-"+ String.format("%02d", month) +"-" + String.format("%02d", day));
 	 	 
 	 	 
-	 		} 
+		} 
 	 		
-	 		// display time
-			public void showTimeOnView() { 
-				textDisplayTime = (TextView) schedulerChooserView.findViewById(R.id.textTime);
+		// display time
+		public void showTimeOnView() { 
+			textDisplayTime = (TextView) schedulerChooserView.findViewById(R.id.textTime);
 				
-				int hours = 0;
-				int minutes = 0;
-				//Initiate timeUserFrom in GlobalData
-				appState.setTimeUserFrom(hours, minutes);
-		    	// set  time into textview
-				textDisplayTime.setText(String.format("%02d", hours) +":"+ String.format("%02d", minutes)); 
-			}
+			int hours = 0;
+			int minutes = 0;
+			//Initiate timeUserFrom in GlobalData
+			appState.setTimeUserFrom(hours, minutes);
+			// set  time into textview
+			textDisplayTime.setText(String.format("%02d", hours) +":"+ String.format("%02d", minutes)); 
+		}
 	 		
 	 		
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				switch (v.getId()) {
-		        case R.id.buttonSelectDate:
-		        	DialogFragment dateFragment = new DatePickerFragment(textDisplayDate);
-		     	    dateFragment.show(getChildFragmentManager(), "datePicker");
-		            break;
-		        case R.id.buttonSelectTime:
-		        	DialogFragment timeFragment = new TimePickerFragment(textDisplayTime);
-		 		    timeFragment.show(getChildFragmentManager(), "timePicker");
-		        	break;
-		        case R.id.btnCheckAvailableResources:
-		        	// Calling async task to get json
-		        	appState.setDateTimeUserFrom();
-			 		appState.setDateTimeUserUntil();
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			switch (v.getId()) {
+				case R.id.buttonSelectDate:
+					DialogFragment dateFragment = new DatePickerFragment(textDisplayDate);
+					dateFragment.show(getChildFragmentManager(), "datePicker");
+				break;
+				case R.id.buttonSelectTime:
+					DialogFragment timeFragment = new TimePickerFragment(textDisplayTime);
+					timeFragment.show(getChildFragmentManager(), "timePicker");
+				break;
+				case R.id.btnCheckAvailableResources:
+					// Calling async task to get json
+					appState.setDateTimeUserFrom();
+					appState.setDateTimeUserUntil();
 			 		
-		        	if (isNetworkConnected()){
-		        		DateTimeZone zoneUTC = DateTimeZone.UTC;
-		        		DateTime dateTimeUTC = new DateTime(zoneUTC);
-		        		Log.i("datetime utc",dateTimeUTC.toString());
-		        		Log.i("user time", appState.getDateTimeUserFrom()+ "");
-		        		if(appState.getDateTimeUserFrom().isBefore(dateTimeUTC)){
+					if (isNetworkConnected()){
+						DateTimeZone zoneUTC = DateTimeZone.UTC;
+						DateTime dateTimeUTC = new DateTime(zoneUTC);
+						Log.i("datetime utc",dateTimeUTC.toString());
+						Log.i("user time", appState.getDateTimeUserFrom()+ "");
+						if(appState.getDateTimeUserFrom().isBefore(dateTimeUTC)){
 		        		
+							int duration = Toast.LENGTH_SHORT;
+							Toast.makeText(schedulerChooserView.getContext(), "Date and Time input is before now", duration).show();
+						}
+						else
+							new JSONTestbedTask().execute();
+					} else {
 		        			int duration = Toast.LENGTH_SHORT;
-		        			Toast.makeText(schedulerChooserView.getContext(), "Date and Time input is before now", duration).show();
-		        		}
-		        		else
-		        			new JSONTestbedTask().execute();
-		        	}
-		        	else{
-		        		int duration = Toast.LENGTH_SHORT;
 
-		        		Toast.makeText(schedulerChooserView.getContext(), "No network connection", duration).show();
-		        	
+		        			Toast.makeText(schedulerChooserView.getContext(), "No network connection", duration).show();
+		        		}
+		        		break;
 		        	}
-		        	break;
-		        }
-			 
 				
 			}
 			
-              //This function checks if there is a network connection			
-			  public boolean isNetworkConnected(){
-			    	ConnectivityManager cm =
+			//This function checks if there is a network connection			
+			public boolean isNetworkConnected(){
+				ConnectivityManager cm =
 			    	        (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 			    	 
-			    	NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-			    	boolean isConnected = activeNetwork != null &&
-			    	                      activeNetwork.isConnectedOrConnecting();
-			    	return isConnected;
-			    }
+				NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+				boolean isConnected = activeNetwork != null &&
+					activeNetwork.isConnectedOrConnecting();
+				return isConnected;
+			}
 			
 			  
-			  //Fix error for nested fragments, taken from stackoverflow, it may not needed
-				@Override
-				public void onDetach() {
-				    super.onDetach();
+			//Fix error for nested fragments, taken from stackoverflow, it may not needed
+			@Override
+			public void onDetach() {
+				super.onDetach();
 
-				    try {
-				        Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-				        childFragmentManager.setAccessible(true);
-				        childFragmentManager.set(this, null);
-
-				    } catch (NoSuchFieldException e) {
-				        throw new RuntimeException(e);
-				    } catch (IllegalAccessException e) {
-				        throw new RuntimeException(e);
-				    }
+				try {
+					Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+					childFragmentManager.setAccessible(true);
+					childFragmentManager.set(this, null);
+				} catch (NoSuchFieldException e) {
+					throw new RuntimeException(e);
+				} catch (IllegalAccessException e) {
+					throw new RuntimeException(e);
 				}
+			}
 			
-			
-			
+					
 			private class JSONTestbedTask extends AsyncTask<Void, Void, Void> {
 				
 				ProgressDialog progressDialog;
 
 				
-				 @Override
-			      protected void onPreExecute(){ 
-			           super.onPreExecute();
-			               progressDialog = new ProgressDialog(schedulerChooserView.getContext());
+				@Override
+				protected void onPreExecute(){ 
+					super.onPreExecute();
+					progressDialog = new ProgressDialog(schedulerChooserView.getContext());
 			                
-			                progressDialog.setMessage("Please wait...");
-			                progressDialog.show();    
-			       }
+					progressDialog.setMessage("Please wait...");
+					progressDialog.show();    
+				}
 			    	
-		    	   protected Void doInBackground(Void... arg0) {
-		    		   	//A Fake Trust Manager to allow all ssl connections	
-		    		   	FakeX509TrustManager.allowAllSSL();
+				protected Void doInBackground(Void... arg0) {
+					//A Fake Trust Manager to allow all ssl connections	
+					FakeX509TrustManager.allowAllSSL();
 		    	
-		    		   	Log.i("JSONTestbedTask", "doInBackground");
+					Log.i("JSONTestbedTask", "doInBackground");
 		    		   
-		    		    String jsonNodesStr = null;
-		    		    String jsonChannelsStr = null;
-		    		   	String jsonLeasesStr = null;
+					String jsonNodesStr = null;
+					String jsonChannelsStr = null;
+					String jsonLeasesStr = null;
 		    		   	
-		    		   	try {
+					try {
 		    		   		
-		    		      	//Get resources/nodes json
-		    		   		jsonNodesStr = ( (new TestbedHttpClient()).getTestbedData("nodes"));
-		    		   		//Get resources/channels json
-		    		   		jsonChannelsStr = ( (new TestbedHttpClient()).getTestbedData("channels"));
-		    		     	//Get resources/leases json
-			    		 	jsonLeasesStr = ( (new TestbedHttpClient()).getTestbedData("leases"));
+						//Get resources/nodes json
+						jsonNodesStr = ( (new TestbedHttpClient()).getTestbedData("nodes"));
+						//Get resources/channels json
+						jsonChannelsStr = ( (new TestbedHttpClient()).getTestbedData("channels"));
+						//Get resources/leases json
+						jsonLeasesStr = ( (new TestbedHttpClient()).getTestbedData("leases"));
 			    		   		
 			    		 	//In case we want hardcoded data, we have the data stored locally in files
 		    		   	/*	
@@ -274,14 +269,14 @@ textDisplayDate = (TextView) schedulerChooserView.findViewById(R.id.textDate);
 		    		   		}
 										*/		
 			    		 	
-		    		   		//Parse Nodes, Channels and Leases JSON
-		    		   		JSONTestbedParser jsonParser = new JSONTestbedParser();
+						//Parse Nodes, Channels and Leases JSON
+						JSONTestbedParser jsonParser = new JSONTestbedParser();
 		    		   		
-		    		   		if(jsonNodesStr != null) {
-		    		   			jsonParser.setNodes(jsonNodesStr);
-		    		   		}
-		    		   		else {
-		    		   			Log.e("ServiceHandler", "Couldn't get any data from the url");
+						if(jsonNodesStr != null) {
+							jsonParser.setNodes(jsonNodesStr);
+						}
+						else {
+Log.e("ServiceHandler", "Couldn't get any data from the url");
 		    		   		}
 		    		   		
 		    		   		if(jsonChannelsStr != null) {
