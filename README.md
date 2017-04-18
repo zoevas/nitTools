@@ -9,7 +9,7 @@ From the left-hand side an Android device (not necessarily a smartphone, it coul
 application already installed communicates with the web service using a special RESTful API. The application sends HTTP requests with GET/PUT/POST/DELETE method headers and receives well formatted JSON responses. REST objects can be exchanged
 both ways.
 
-![alt tag](https://github.com/zoevas/nitTools/blob/master/System%20architecture.png)
+![alt tag](https://github.com/zoevas/nitTools/blob/master/read_me_images/System%20architecture.png)
 
 
 ## System Architecture
@@ -45,4 +45,4 @@ and making GET and POST requests.
 - Constants: Constants class is responsible for all the constants of the application.
 
 ## Screenshots
-![alt tag](https://github.com/zoevas/nitTools/blob/master/System%20architecture.png)
+![alt tag](https://github.com/zoevas/nitTools/blob/master/read_me_images/login_screen.png)
