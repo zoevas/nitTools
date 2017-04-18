@@ -15,30 +15,31 @@ both ways.
 
 
 NitosTools consists of four activities:
-• LoginScreenActivity: validates the user.
-• MainMenuActivity: displays a list of all the testbed tools.
-• NitosSchedulerActivity: creates a tabbed user interface.
-• MyReservationsActivity: displays all the user’s reservations and offers the ability
+- LoginScreenActivity: validates the user.
+- MainMenuActivity: displays a list of all the testbed tools.
+- NitosSchedulerActivity: creates a tabbed user interface.
+- MyReservationsActivity: displays all the user’s reservations and offers the ability
 for canceling them.
+
 Apart from the activities, the application consists of eight fragments:
-• SchedulerChooserFragment displays the user’s interface for choosing the reserva-
+- SchedulerChooserFragment displays the user’s interface for choosing the reserva-
 tion’s parameters(slice, date, time, duration) and checking the available resources.
-• DatePickerFragment: is fired through the SchedulerChooserFragment for the date
+- DatePickerFragment: is fired through the SchedulerChooserFragment for the date
 selection.
-• TimePickerFragment: is fired through the SchedulerChooserFragment for the time
+- TimePickerFragment: is fired through the SchedulerChooserFragment for the time
 selection.
 
-• OutdoorTestbedFragmen: displays the outdoor testbed
-• IndoorTestbedFragment: displays the indoor testbed
-• AvailableResourcesFragment: displays a UI displaying all available nodes. The
+- OutdoorTestbedFragmen: displays the outdoor testbed
+- IndoorTestbedFragment: displays the indoor testbed
+-  AvailableResourcesFragment: displays a UI displaying all available nodes. The
 user can reserve the resources through this fragment.
-• CheckResourcesFragment: a nested fragment to the AvailableNodesFragment, which
+- CheckResourcesFragment: a nested fragment to the AvailableNodesFragment, which
 displays all the nodes of a specific type in a listview of checkboxes.
-• ReserveResourcesFragment: performs the reservation process and in case of a suc-
+- ReserveResourcesFragment: performs the reservation process and in case of a suc-
 cessful reservation displays an appropriate message.
 There are also two classes performing the requests to the server:
-• TestbedHttpClient: This class contains methods for connecting with the server
+- TestbedHttpClient: This class contains methods for connecting with the server
 and making GET and POST requests.
-• GlobalData: This class contains all the global data for the application
-• Reservation: This class contains information(date and time) for a reservation.
-• Constants: Constants class is responsible for all the constants of the application.
+- GlobalData: This class contains all the global data for the application
+- Reservation: This class contains information(date and time) for a reservation.
+- Constants: Constants class is responsible for all the constants of the application.
