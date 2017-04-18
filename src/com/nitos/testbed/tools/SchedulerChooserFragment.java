@@ -379,72 +379,67 @@ public  class SchedulerChooserFragment extends Fragment   implements OnClickList
 			
 			public void setChannels(String jsonChannelsStr) throws JSONException  {
 		    	
-JSONObject jsonChannelsObj = new JSONObject(jsonChannelsStr);
+				JSONObject jsonChannelsObj = new JSONObject(jsonChannelsStr);
 		    		
-	    		 	JSONObject resource_response_obj = jsonChannelsObj.getJSONObject(Constants.TAG_RESOURCE_RESPONSE);
+				JSONObject resource_response_obj = jsonChannelsObj.getJSONObject(Constants.TAG_RESOURCE_RESPONSE);
 			
-					JSONArray resources = resource_response_obj.getJSONArray(Constants.TAG_RESOURCES);
+				JSONArray resources = resource_response_obj.getJSONArray(Constants.TAG_RESOURCES);
 	          			
-					Log.i("JSONTestbedParser", "set Channels");
+				Log.i("JSONTestbedParser", "set Channels");
 					
-					ArrayList<String> check_for_channel_names_duplicates = new ArrayList<String>();
-					// looping through All Leases
-					for (int channel_i = 0; channel_i < resources.length(); channel_i++) {
-					
-						    JSONObject channelObj = resources.getJSONObject(channel_i);
+				ArrayList<String> check_for_channel_names_duplicates = new ArrayList<String>();
+				// looping through All Leases
+				for (int channel_i = 0; channel_i < resources.length(); channel_i++) {
+					JSONObject channelObj = resources.getJSONObject(channel_i);
 						    
-						    Log.i("JSONTestbedParser channel name", channelObj.getString("name"));
+					Log.i("JSONTestbedParser channel name", channelObj.getString("name"));
 							
-					        String channel_name = channelObj.getString("name");
-							String uuid = channelObj.getString("uuid");
+					String channel_name = channelObj.getString("name");
+					String uuid = channelObj.getString("uuid");
 							
-							//A node can be contained two times 
-							if(check_for_channel_names_duplicates.contains(channel_name)){
-						    	Log.w("duplicate channel","");
-						    	continue;
-						    }
-						    else{
-						    	check_for_channel_names_duplicates.add(channel_name);
-						    }
-				
-							if((channel_name.compareTo(Constants.LOWER_CHANNEL_802_11a) > 0 && Constants.UPPER_CHANNEL_802_11a.compareTo(channel_name) < 0) ||
-								channel_name.compareTo(Constants.LOWER_CHANNEL_802_11a) == 0 || channel_name.compareTo(Constants.UPPER_CHANNEL_802_11a) == 0 ) {								
-                            	ResourcesData resourcesData = new ResourcesData(uuid);
-								appState.channels_802_11a.put(channel_name, resourcesData);
-								Log.i("Channel",channel_name + " - " + "1-13");
-							}
-							else if(channel_name.compareTo(Constants.LOWER_CHANNEL_802_11bg) > 0 && Constants.UPPER_CHANNEL_802_11bg.compareTo(channel_name) < 0 ||
-									channel_name.compareTo(Constants.LOWER_CHANNEL_802_11bg) == 0 || channel_name.compareTo(Constants.UPPER_CHANNEL_802_11bg) == 0 ){
-								ResourcesData resourcesData = new ResourcesData(uuid);
-								appState.channels_802_11bg.put(channel_name, resourcesData);
-								Log.i("Channel",channel_name + " - " + "36-40");
-							}
-							else{
-								Log.w("Channel Type", "unknown");
-							}
-							
+					//A node can be contained two times 
+					if(check_for_channel_names_duplicates.contains(channel_name)){
+						Log.w("duplicate channel","");
+						continue;
+					} else {
+						check_for_channel_names_duplicates.add(channel_name);
 					}
+				
+					if((channel_name.compareTo(Constants.LOWER_CHANNEL_802_11a) > 0 && Constants.UPPER_CHANNEL_802_11a.compareTo(channel_name) < 0) ||
+						channel_name.compareTo(Constants.LOWER_CHANNEL_802_11a) == 0 || channel_name.compareTo(Constants.UPPER_CHANNEL_802_11a) == 0 ) {								
 						
-				
-				
-		    	}
+						ResourcesData resourcesData = new ResourcesData(uuid);
+						appState.channels_802_11a.put(channel_name, resourcesData);
+						Log.i("Channel",channel_name + " - " + "1-13");
+					} else if (channel_name.compareTo(Constants.LOWER_CHANNEL_802_11bg) > 0 && Constants.UPPER_CHANNEL_802_11bg.compareTo(channel_name) < 0 ||
+							channel_name.compareTo(Constants.LOWER_CHANNEL_802_11bg) == 0 || channel_name.compareTo(Constants.UPPER_CHANNEL_802_11bg) == 0 ){
+								
+							ResourcesData resourcesData = new ResourcesData(uuid);
+							appState.channels_802_11bg.put(channel_name, resourcesData);
+							Log.i("Channel",channel_name + " - " + "36-40");
+					} else {
+						Log.w("Channel Type", "unknown");
+					}
+							
+				}
+	
+			}
 		    	
-		    	public void setLeases(String jsonLeasesStr) throws JSONException  {
-		    		    JSONObject jsonLeasesObj = new JSONObject(jsonLeasesStr);
+			public void setLeases(String jsonLeasesStr) throws JSONException  {
+				JSONObject jsonLeasesObj = new JSONObject(jsonLeasesStr);
 		            
-						JSONObject resource_response_obj = jsonLeasesObj.getJSONObject(Constants.TAG_RESOURCE_RESPONSE);
-						// Getting JSON Array Leases
-						JSONArray resources = resource_response_obj.getJSONArray(Constants.TAG_RESOURCES);
+				JSONObject resource_response_obj = jsonLeasesObj.getJSONObject(Constants.TAG_RESOURCE_RESPONSE);
+				// Getting JSON Array Leases
+				JSONArray resources = resource_response_obj.getJSONArray(Constants.TAG_RESOURCES);
 		     
-						Log.i("JSONTestbedParser", "set Leases");
+				Log.i("JSONTestbedParser", "set Leases");
 		      
-						// looping through All Leases
-						for (int lease_i = 0; lease_i < resources.length(); lease_i++) {
-						
-							    JSONObject leaseObj = resources.getJSONObject(lease_i);
+				// looping through All Leases
+				for (int lease_i = 0; lease_i < resources.length(); lease_i++) {
+					JSONObject leaseObj = resources.getJSONObject(lease_i);
 							    
-							    //Ignore the leases with status = past and status = cancelled
-							    String leaseStatus = leaseObj.getString("status");
+//Ignore the leases with status = past and status = cancelled
+String leaseStatus = leaseObj.getString("status");
 							    if(leaseStatus.equals("past") || leaseStatus.equals("cancelled"))
 							    	continue;
 								
