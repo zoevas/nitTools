@@ -279,11 +279,11 @@ public class AvailableResourcesFragment extends Fragment  implements OnClickList
 						String node_name = entry.getKey();
 						String uuid = resourcesData.getUUID();
 						appState.setOrbitAvailableNodes(node_name, uuid);
-	 				  }
-	 			   }
+	 				}
+				}
 
-				 break;	
-	 		  case GRID:
+				break;	
+			case GRID:
 	 			   Log.i("Check Available Nodes","Grid Nodes");
 	 			   HashMap<String, ResourcesData> gridNodes = appState.getGridNodes();
 	 			   appState.clearGridAvailableNodes();
@@ -423,79 +423,75 @@ public class AvailableResourcesFragment extends Fragment  implements OnClickList
 				
 				break;
 	 		   case CHANNELS_802_11A:
-	 			   Log.i("Check Available Channels bg","Channels bgs");
-	 			   HashMap<String, ResourcesData> channels_802_11a = appState.getChannels802_11a();
-	 			   appState.clearChannels_802_11a_available();
-	 			   for (Map.Entry<String, ResourcesData>entry:channels_802_11a .entrySet()) {
-	 				   Log.i("Available Channels bg", "" + entry.getKey());
+				Log.i("Check Available Channels bg","Channels bgs");
+				HashMap<String, ResourcesData> channels_802_11a = appState.getChannels802_11a();
+				appState.clearChannels_802_11a_available();
+				for (Map.Entry<String, ResourcesData>entry:channels_802_11a .entrySet()) {
+					Log.i("Available Channels bg", "" + entry.getKey());
 	 				   
-	 				   ResourcesData resourcesData = entry.getValue();
-	 				   ArrayList<Reservation> reservations = resourcesData.getReservations();
+					ResourcesData resourcesData = entry.getValue();
+					ArrayList<Reservation> reservations = resourcesData.getReservations();
 	 				   
-	 				   boolean available = true;
+					boolean available = true;
 	 				   
-	 				   for(int i = 0; i < reservations.size(); i++){
-	 					   Reservation reservation_i = reservations.get(i);
-	 					   available = intersectDateIntervals(reservation_i);
-	 					   if(!available)
-	 						      break; 
-	 				   }
+					for(int i = 0; i < reservations.size(); i++){
+						Reservation reservation_i = reservations.get(i);
+						available = intersectDateIntervals(reservation_i);
+						if(!available)
+							break; 
+					}
 	 				   
-	 				  if(available) {
-	 					 String channel_name = entry.getKey();
-	 					 String uuid = resourcesData.getUUID();
-	 				     appState.setChannels_802_11a_available(channel_name, uuid);
-	 				  }
-	 			   }
-	 			   break;
-	 		   case CHANNELS_802_11BG:
-	 			  Log.i("Check Available Channels","Channels bg");
-	 			   HashMap<String, ResourcesData> channels_802_11bg = appState.getChannels802_11bg();
-	 			   appState.clearChannels_802_11bg_available();
-	 			   for (Map.Entry<String, ResourcesData>entry:channels_802_11bg .entrySet()) {
-	 				   Log.i("Available Channels bg", "" + entry.getKey());
+					if(available) {
+						String channel_name = entry.getKey();
+						String uuid = resourcesData.getUUID();
+						appState.setChannels_802_11a_available(channel_name, uuid);
+					}
+				}
+				break;
+			case CHANNELS_802_11BG:
+				Log.i("Check Available Channels","Channels bg");
+				HashMap<String, ResourcesData> channels_802_11bg = appState.getChannels802_11bg();
+				for (Map.Entry<String, ResourcesData>entry:channels_802_11bg .entrySet()) {
+					Log.i("Available Channels bg", "" + entry.getKey());
 	 				   
-	 				   ResourcesData resourcesData = entry.getValue();
-	 				   ArrayList<Reservation> reservations = resourcesData.getReservations();
+					ResourcesData resourcesData = entry.getValue();
+					ArrayList<Reservation> reservations = resourcesData.getReservations();
 	 				   
-	 				   boolean available = true;
+					boolean available = true;
 	 				   
-	 				   for(int i = 0; i < reservations.size(); i++){
-	 					   Reservation reservation_i = reservations.get(i);
-	 					   available = intersectDateIntervals(reservation_i);
-	 					   if(!available)
-	 						      break; 
-	 				   }
+					for(int i = 0; i < reservations.size(); i++){
+						Reservation reservation_i = reservations.get(i);
+						available = intersectDateIntervals(reservation_i);
+						if(!available)
+							break; 
+					}
 	 				   
-	 				  if(available) {
-	 					 String channel_name = entry.getKey();
-	 					 String uuid = resourcesData.getUUID();
-	 				     appState.setChannels_802_11bg_available(channel_name, uuid);
-	 				  }
-	 			   }
-	 			   break;
-	 		   default:
-	 			   break;
-	 		}
+					if(available) {
+						String channel_name = entry.getKey();
+						String uuid = resourcesData.getUUID();
+						appState.setChannels_802_11bg_available(channel_name, uuid);
+					}
+				}
+				default:
+					break;
+			}
 	 		
-
-	 	}
+		}
 	 	
-	 	//Check if the given date is in range of a reservation
-	 	public boolean intersectDateIntervals(Reservation reservation){
-	 		DateTime dateTimeUserFrom = appState.getDateTimeUserFrom();
-	 		DateTime dateTimeUserUntil = appState.getDateTimeUserUntil();
-	 		if(dateTimeUserUntil.isBefore(reservation.getDateTimeFrom()) || dateTimeUserUntil.isEqual(reservation.getDateTimeFrom())){
-	 			Log.i("intersect intervals","false");
-	 			return true;
-	 		}
-	 		else if(dateTimeUserFrom.isAfter(reservation.getDateTimeUntil()) || dateTimeUserFrom.isEqual(reservation.getDateTimeUntil())){
-	 			Log.i("intersect intervals","false");
-	 			return true;
-	 			
-	 		}
-	 		Log.i("intersect intervals","true");
-	 		return false;
-	 	}
+	//Check if the given date is in range of a reservation	
+	public boolean intersectDateIntervals(Reservation reservation){
+		DateTime dateTimeUserFrom = appState.getDateTimeUserFrom();
+		DateTime dateTimeUserUntil = appState.getDateTimeUserUntil();
+		if(dateTimeUserUntil.isBefore(reservation.getDateTimeFrom()) || dateTimeUserUntil.isEqual(reservation.getDateTimeFrom())){
+			Log.i("intersect intervals","false");
+			return true;
+		} else if(dateTimeUserFrom.isAfter(reservation.getDateTimeUntil()) || dateTimeUserFrom.isEqual(reservation.getDateTimeUntil())){
+			Log.i("intersect intervals","false");
+			return true;
+		}
+		
+		Log.i("intersect intervals","true");
+		return false;
+	}
 	 	
 }
