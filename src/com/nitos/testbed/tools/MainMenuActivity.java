@@ -30,12 +30,12 @@ public class MainMenuActivity extends ActionBarActivity {
 		
 		
 		ActionBar  actionBar = getSupportActionBar(); 
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#172741"));     
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setDisplayShowTitleEnabled(false);
+		ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#172741"));     
+		actionBar.setBackgroundDrawable(colorDrawable);
+		actionBar.setDisplayShowTitleEnabled(false);
         
         
-        ListView menuList = (ListView) findViewById(R.id.ListView_Menu);
+		ListView menuList = (ListView) findViewById(R.id.ListView_Menu);
 		 
 		String[] items = { getResources().getString(R.string.menu_item_nitos_scheduler),
 	               getResources().getString(R.string.menu_item_connectivity_tool),
@@ -48,59 +48,51 @@ public class MainMenuActivity extends ActionBarActivity {
 	             };
 		 
 		ArrayAdapter<String> adapt = new ArrayAdapter<String>(this, R.layout.menu_item, items);
-	    menuList.setAdapter(adapt);
+		menuList.setAdapter(adapt);
 		
-	    menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
 
-                // Note: if the list was built "by hand" the id could be used.
-                // As-is, though, each item has the same id
+				// Note: if the list was built "by hand" the id could be used.
+				// As-is, though, each item has the same id
             	           	
-                TextView textView = (TextView) itemClicked;
-                String strText = textView.getText().toString();
+				TextView textView = (TextView) itemClicked;
+				String strText = textView.getText().toString();
 
-                if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_nitos_scheduler))) {
-                    // Launch the Game Activity
-                    startActivity(new Intent(MainMenuActivity.this, NitosSchedulerActivity.class));
-                } else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_connectivity_tool))) {
-                    // Launch the Help Activity
-                    //startActivity(new Intent(QuizMenuActivity.this, QuizHelpActivity.class));
-                } else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_node_distance_tool))) {
-                    // Launch the Settings Activity
-                    //startActivity(new Intent(QuizMenuActivity.this, QuizSettingsActivity.class));
-                } else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_openflow_settings))) {
-                    // Launch the Scores Activity
-                    //startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
-                }
-                else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_measurement_map_depiction))) {
-                // Launch the Scores Activity
-                //startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
-                }
-                else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_testbed_status))) {
-                  // Launch the Scores Activity
-                 //startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
-                }
-                else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_cm_framework))) {
-                    // Launch the Scores Activity
-                   //startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
-                }
-                else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_usb_sensors_toolkit))) {
-                    // Launch the Scores Activity
-                   //startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
-                }
-
-            }
-            
-          
-        });       
+				if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_nitos_scheduler))) {
+					// Launch the Game Activity
+					startActivity(new Intent(MainMenuActivity.this, NitosSchedulerActivity.class));
+				} else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_connectivity_tool))) {
+					// Launch the Help Activity
+					//startActivity(new Intent(QuizMenuActivity.this, QuizHelpActivity.class));
+				} else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_node_distance_tool))) {
+				// Launch the Settings Activity
+				//startActivity(new Intent(QuizMenuActivity.this, QuizSettingsActivity.class));
+				} else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_openflow_settings))) {
+				// Launch the Scores Activity
+				//startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
+				} else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_measurement_map_depiction))) {
+				// Launch the Scores Activity
+				//startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
+				} else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_testbed_status))) {
+  				// Launch the Scores Activity
+				//startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
+				} else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_cm_framework))) {
+				// Launch the Scores Activity
+				//startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
+ 				} else if (strText.equalsIgnoreCase(getResources().getString(R.string.menu_item_usb_sensors_toolkit))) {
+				// Launch the Scores Activity
+				//startActivity(new Intent(QuizMenuActivity.this, QuizScoresActivity.class));
+				}
+			}
+		});       
         
 	}
 	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu, menu);
 		return true;
@@ -112,26 +104,22 @@ public class MainMenuActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-	    if( id== R.id.home){
-	        NavUtils.navigateUpFromSameTask(this);
-	        return true;
-	    }
-	    else if(id == R.id.action_user_reservations){
-	    	Intent intent = new Intent(this, MyReservationsActivity.class);
-	    	startActivity(intent);
-	    }
-	    else if(id == R.id.logout) {          
-           SharedPreferences loginPreferences = getSharedPreferences(Constants.LOGINPREFS, 0);
-           Editor loginPrefsEditor = loginPreferences.edit();
-		   loginPrefsEditor.putBoolean("saveLogin", false).commit();
+		if( id== R.id.home){
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		} else if(id == R.id.action_user_reservations){
+			Intent intent = new Intent(this, MyReservationsActivity.class);
+			startActivity(intent);
+		} else if(id == R.id.logout) {          
+			SharedPreferences loginPreferences = getSharedPreferences(Constants.LOGINPREFS, 0);
+			Editor loginPrefsEditor = loginPreferences.edit();
+			loginPrefsEditor.putBoolean("saveLogin", false).commit();
            
-		   Intent intent = new Intent();  
-		   intent.setClass(MainMenuActivity.this, LoginScreenActivity.class);  
-		   startActivity(intent);  
-	    }
+			Intent intent = new Intent();  
+			intent.setClass(MainMenuActivity.this, LoginScreenActivity.class);  
+		  	startActivity(intent);  
+		}
 		return super.onOptionsItemSelected(item);
 	}
-
-	
 
 }
