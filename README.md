@@ -9,8 +9,8 @@ From the left-hand side an Android device (not necessarily a smartphone, it coul
 application already installed communicates with the web service using a special RESTful API. The application sends HTTP requests with GET/PUT/POST/DELETE method headers and receives well formatted JSON responses. REST objects can be exchanged
 both ways.
 
-![alt tag](https://github.com/zoevas/nitTools/blob/master/read_me_images/System%20architecture.png)
-
+[<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/System%20architecture.png" align="left"
+width="850"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/System%20architecture.png)
 
 ## System Architecture
 
@@ -57,10 +57,9 @@ width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob
 [<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/date_time.png" align="left"
 width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/date_time.png)
 
+[<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png" align="left" width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png)
 [<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/outdoor.png" align="left"
 width="200" hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/outdoor.png)
-
-[<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png" align="left" width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png)
 
 [<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/reservation_status_user.png" align="left"
 width="200" hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/reservation_status_user.png)
