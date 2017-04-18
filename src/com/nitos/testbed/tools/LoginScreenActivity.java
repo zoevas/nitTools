@@ -37,38 +37,36 @@ public class LoginScreenActivity  extends Activity implements OnClickListener{
 		loginPreferences = getSharedPreferences(Constants.LOGINPREFS, 0);
 		loginPrefsEditor = loginPreferences.edit();
 		
-        usernameEditText = (EditText)findViewById(R.id.usernameEditText);
-        passwordEditText = (EditText)findViewById(R.id.passwordEditText);
+		usernameEditText = (EditText)findViewById(R.id.usernameEditText);
+		passwordEditText = (EditText)findViewById(R.id.passwordEditText);
         keepMeSignedInCheckbox = (CheckBox)findViewById(R.id.keep_me_signed_in_checkbox);
 
-        keepMeSignedInCheckbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                SharedPreferences sharedPreferences = getSharedPreferences(Constants.LOGINPREFS, 0);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("isChecked", isChecked);
-                Log.i("LoginActivity", "isChecked" +  " is " + isChecked);
-                editor.commit();
-            }
-        });    
+		keepMeSignedInCheckbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				SharedPreferences sharedPreferences = getSharedPreferences(Constants.LOGINPREFS, 0);
+				SharedPreferences.Editor editor = sharedPreferences.edit();
+				editor.putBoolean("isChecked", isChecked);
+				Log.i("LoginActivity", "isChecked" +  " is " + isChecked);
+				editor.commit();
+			}
+		});    
         
-         signInButton = (Button)findViewById(R.id.signinButton);
-         signInButton.setOnClickListener(this);
+		signInButton = (Button)findViewById(R.id.signinButton);
+		signInButton.setOnClickListener(this);
          
-         saveLogin = loginPreferences.getBoolean("saveLogin", false);
-         if (saveLogin == true) {
-             usernameEditText.setText(loginPreferences.getString("username", ""));
-             passwordEditText.setText(loginPreferences.getString("password", ""));
-             keepMeSignedInCheckbox.setChecked(true);
-         }
+		saveLogin = loginPreferences.getBoolean("saveLogin", false);
+		if (saveLogin == true) {
+			usernameEditText.setText(loginPreferences.getString("username", ""));
+			passwordEditText.setText(loginPreferences.getString("password", ""));
+			keepMeSignedInCheckbox.setChecked(true);
+		}
        
-         //if the keepMeSignedInCheckbox is checked we are redirected to the MainMenuActivity
-         if(keepMeSignedInCheckbox.isChecked()){
-             Intent intent = new Intent();  
-             intent.setClass(LoginScreenActivity.this, MainMenuActivity.class);  
-             startActivity(intent);  
-         }
-        
+		if(keepMeSignedInCheckbox.isChecked()){
+			Intent intent = new Intent();  
+			intent.setClass(LoginScreenActivity.this, MainMenuActivity.class);  
+			startActivity(intent);  
+		}
 	}
 	
 
@@ -80,21 +78,19 @@ public class LoginScreenActivity  extends Activity implements OnClickListener{
 		if(v.getId() == R.id.signinButton){
 			Log.i("LoginActivity","signin button");
 		
-		    String username =  usernameEditText.getText().toString();
-	        String password =  passwordEditText.getText().toString();
+			String username =  usernameEditText.getText().toString();
+			String password =  passwordEditText.getText().toString();
 
 			boolean isChecked = loginPreferences.getBoolean("isChecked", false);
 			Log.i("LoginActivity signin button", "isChecked" +  " is " + isChecked);
 			if (isChecked) {  
 				//Save preferences for next login
 				loginPrefsEditor.putBoolean("saveLogin", true);
-	            loginPrefsEditor.putString("username", username);
-	            loginPrefsEditor.putString("password", password);
-	            loginPrefsEditor.commit();
-	          
-	        } 
-			else{
-				  loginPrefsEditor.clear().commit();
+				loginPrefsEditor.putString("username", username);
+				loginPrefsEditor.putString("password", password);
+				loginPrefsEditor.commit();     
+	        } else {
+				loginPrefsEditor.clear().commit();
 			}
 		
 			if(username.equals("ardadouk")){
@@ -104,7 +100,6 @@ public class LoginScreenActivity  extends Activity implements OnClickListener{
 			}
 		}
 	}
-	
 	
 
 }
