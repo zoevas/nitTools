@@ -45,4 +45,7 @@ and making GET and POST requests.
 - Constants: Constants class is responsible for all the constants of the application.
 
 ## Screenshots
-![alt tag](https://github.com/zoevas/nitTools/blob/master/read_me_images/login_screen.png =100x20)
+[<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/login_screen.png" align="left"
+width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/login_screen.png)
+[<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png" align="left"
+width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png)
