@@ -39,7 +39,7 @@ public class LoginScreenActivity  extends Activity implements OnClickListener{
 		
 		usernameEditText = (EditText)findViewById(R.id.usernameEditText);
 		passwordEditText = (EditText)findViewById(R.id.passwordEditText);
-        keepMeSignedInCheckbox = (CheckBox)findViewById(R.id.keep_me_signed_in_checkbox);
+        	keepMeSignedInCheckbox = (CheckBox)findViewById(R.id.keep_me_signed_in_checkbox);
 
 		keepMeSignedInCheckbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
