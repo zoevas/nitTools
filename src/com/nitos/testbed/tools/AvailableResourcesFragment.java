@@ -30,155 +30,143 @@ import android.widget.TextView;
  * of checkboxes.*/
 public class AvailableResourcesFragment extends Fragment  implements OnClickListener{
 
-	 View slidingView;
-	 GlobalData appState;
+		View slidingView;
+		GlobalData appState;
 	 
 	 
-	 ListView nodesListView;
+		ListView nodesListView;
 	 
-	 public void onCreate(Bundle savedInstanceState){
-		 super.onCreate(savedInstanceState);
-		 appState = ((GlobalData)getActivity().getApplicationContext());
-	 }
+		public void onCreate(Bundle savedInstanceState){
+			super.onCreate(savedInstanceState);
+			appState = ((GlobalData)getActivity().getApplicationContext());
+		}
 	
-	 @Override
-	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	   	    	// Inflate the layout for this fragment
+				slidingView =  inflater.inflate(R.layout.available_resources_fragment, null);
+				SlidingPaneLayout pane = (SlidingPaneLayout)slidingView.findViewById(R.id.sliding_pane_layout);
+				pane.openPane();		 		
 		 		
-     	    	// Inflate the layout for this fragment
-	    		slidingView =  inflater.inflate(R.layout.available_resources_fragment, null);
-	    				 		 		
+				//Set date and time given by user to ekana st scheduler chooser fragment		 		
+				/*appState.setDateTimeUserFrom();
+				appState.setDateTimeUserUntil();*/
+				Log.i("AvailableNodesFragment DateTimeUserFrom", appState.getDateTimeUserFrom().toString());
+				Log.i("AvailableNodesFragment DateTimeUserUntil", appState.getDateTimeUserUntil().toString());
 		 		
-		 		SlidingPaneLayout pane = (SlidingPaneLayout)slidingView.findViewById(R.id.sliding_pane_layout);
-		 		pane.openPane();		 		
+				ListView nodesListView = (ListView) slidingView.findViewById(R.id.nodes_list);
 		 		
-		 		//Set date and time given by user to ekana st scheduler chooser fragment		 		
-		 		/*appState.setDateTimeUserFrom();
-		 		appState.setDateTimeUserUntil();*/
-		 		Log.i("AvailableNodesFragment DateTimeUserFrom", appState.getDateTimeUserFrom().toString());
-		 		Log.i("AvailableNodesFragment DateTimeUserUntil", appState.getDateTimeUserUntil().toString());
-		 		
-		 		ListView nodesListView = (ListView) slidingView.findViewById(R.id.nodes_list);
-		 		
-		 		//Make the ListView with all nodes categories
-		 		String[] items = { getResources().getString(R.string.orbit_nodes),
-		 	            getResources().getString(R.string.grid_nodes),
-		 	            getResources().getString(R.string.usrp_nodes),
-		 	            getResources().getString(R.string.diskless_nodes), 
-		 	            getResources().getString(R.string.icarus_nodes) ,
-		 	            getResources().getString(R.string.base_station),
-		 	            getResources().getString(R.string.channels_802_11a),
-		 	            getResources().getString(R.string.channels_802_11bg)
-		 	          };
+				//Make the ListView with all nodes categories
+				String[] items = { getResources().getString(R.string.orbit_nodes),
+						getResources().getString(R.string.grid_nodes),
+						getResources().getString(R.string.usrp_nodes),
+						getResources().getString(R.string.diskless_nodes), 
+						getResources().getString(R.string.icarus_nodes) ,
+						getResources().getString(R.string.base_station),
+						getResources().getString(R.string.channels_802_11a),
+						getResources().getString(R.string.channels_802_11bg)
+				};
 
-		 		ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.nodes_categories_listview_item, items);
-		 		nodesListView.setAdapter(adapt);
+				ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.nodes_categories_listview_item, items);
+				nodesListView.setAdapter(adapt);
 		 			 
-		 		nodesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-		 		 @Override
-			      public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-			    			   
-		                       TextView textView = (TextView) itemClicked;
-			                   String strText = textView.getText().toString();
-			                   Bundle args = new Bundle();
+				nodesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			
+				@Override
+				public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+   						TextView textView = (TextView) itemClicked;
+						String strText = textView.getText().toString();
+						Bundle args = new Bundle();
 			                   
 			                 
-			                   if (strText.equalsIgnoreCase(getResources().getString(R.string.icarus_nodes))) {
-			                	    Log.i("AVailableNodes icarus checkboxes size",appState.getIcarusCheckBoxes().size() +"" );
+						if (strText.equalsIgnoreCase(getResources().getString(R.string.icarus_nodes))) {
+							Log.i("AVailableNodes icarus checkboxes size",appState.getIcarusCheckBoxes().size() +"" );
 			                	    
-			                	    checkAvailableResources(Constants.HardwareType.ICARUS);
+							checkAvailableResources(Constants.HardwareType.ICARUS);
+							args.putString("resource_type",Constants.HardwareType.ICARUS.toString());    
 			                	   
-			                	    args.putString("resource_type",Constants.HardwareType.ICARUS.toString());    
-			                	   
-			                	    CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
-				                	FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-					                   
-			                	  
-			       		 		    fragmentTransaction.replace(R.id.child_fragmentB, checkResourcesFragment);
+							CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
+							FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+					                   	  
+							fragmentTransaction.replace(R.id.child_fragmentB, checkResourcesFragment);
 			       		 		   
-			       		 		    checkResourcesFragment.setArguments(args);
+							checkResourcesFragment.setArguments(args);
 			       		 		
-			       		 		    fragmentTransaction.addToBackStack(null);
-			       		 		    fragmentTransaction.commit();
-			                   }
-			                   else  if (strText.equalsIgnoreCase(getResources().getString(R.string.orbit_nodes))) {
-			                	    checkAvailableResources(Constants.HardwareType.ORBIT);
+							fragmentTransaction.addToBackStack(null);
+							fragmentTransaction.commit();
+						} else  if (strText.equalsIgnoreCase(getResources().getString(R.string.orbit_nodes))) {	
+							checkAvailableResources(Constants.HardwareType.ORBIT);
 			                	   
-			                	    args.putString("resource_type",Constants.HardwareType.ORBIT.toString()); 
+							args.putString("resource_type",Constants.HardwareType.ORBIT.toString()); 
 			                	    
-			                	    CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
-				                	FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+							CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
+							FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
 			                	   
-			                	    fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
+							fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
 			       		 		   
-			                	    checkResourcesFragment.setArguments(args);
+							checkResourcesFragment.setArguments(args);
 			       		 		
-			       		 		    fragmentTransaction.addToBackStack(null);
-			       		 		    fragmentTransaction.commit();
-			                   }
-			                   else if (strText.equalsIgnoreCase(getResources().getString(R.string.grid_nodes))) {
-			                	   checkAvailableResources(Constants.HardwareType.GRID);
+							fragmentTransaction.addToBackStack(null);
+			       		 	fragmentTransaction.commit();
+						} else if (strText.equalsIgnoreCase(getResources().getString(R.string.grid_nodes))) {
+							checkAvailableResources(Constants.HardwareType.GRID);
 			                	   
-                                    args.putString("resource_type",Constants.HardwareType.GRID.toString()); 
+							args.putString("resource_type",Constants.HardwareType.GRID.toString()); 
 			                	   
+ 							CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
+							FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+							fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
+			       		 		   
+							checkResourcesFragment.setArguments(args);
+			       		 		
+							fragmentTransaction.addToBackStack(null);
+							fragmentTransaction.commit();
+			                	   
+						} else if (strText.equalsIgnoreCase(getResources().getString(R.string.usrp_nodes))) {
+							checkAvailableResources(Constants.HardwareType.USRP);
+			                	   
+							args.putString("resource_type",Constants.HardwareType.USRP.toString()); 
                                     
-                                    CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
- 			                	    FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-			                	    fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
+							CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
+							FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+			                	   
+							fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
 			       		 		   
-			                	    checkResourcesFragment.setArguments(args);
+							checkResourcesFragment.setArguments(args);
 			       		 		
-			       		 		    fragmentTransaction.addToBackStack(null);
-			       		 		    fragmentTransaction.commit();
-			                	   
-			                   }
-			                   else if (strText.equalsIgnoreCase(getResources().getString(R.string.usrp_nodes))) {
-			                	    checkAvailableResources(Constants.HardwareType.USRP);
-			                	   
-                                    args.putString("resource_type",Constants.HardwareType.USRP.toString()); 
-                                    
-                                    CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
- 			                	    FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-			                	   
-			                	    fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
-			       		 		   
-			                	    checkResourcesFragment.setArguments(args);
-			       		 		
-			       		 		    fragmentTransaction.addToBackStack(null);
-			       		 		   	fragmentTransaction.commit(); 
-			                   }
-			                   else if (strText.equalsIgnoreCase(getResources().getString(R.string.diskless_nodes))) {
-			                	    checkAvailableResources(Constants.HardwareType.DISKLESS);
-				                	   
-	                                args.putString("resource_type",Constants.HardwareType.DISKLESS.toString()); 
+							fragmentTransaction.addToBackStack(null);
+							fragmentTransaction.commit(); 
+						} else if (strText.equalsIgnoreCase(getResources().getString(R.string.diskless_nodes))) {
+							checkAvailableResources(Constants.HardwareType.DISKLESS);
+				               	   
+							args.putString("resource_type",Constants.HardwareType.DISKLESS.toString()); 
 	                                
-	                                CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
-				                	FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+							CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
+							FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
 				                	   
-				                	fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
+							fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
 				       		 		   
-				                	checkResourcesFragment.setArguments(args);
+							checkResourcesFragment.setArguments(args);
 				       		 		
-				       		 		fragmentTransaction.addToBackStack(null);
-				       		 		fragmentTransaction.commit(); 
+							fragmentTransaction.addToBackStack(null);
+							fragmentTransaction.commit(); 
 			                	   
-			                   }
-			                   else if (strText.equalsIgnoreCase(getResources().getString(R.string.base_station))) {
-			                	     checkAvailableResources(Constants.HardwareType.BASE_STATIONS);
+						} else if (strText.equalsIgnoreCase(getResources().getString(R.string.base_station))) {
+							checkAvailableResources(Constants.HardwareType.BASE_STATIONS);
 				                	   
-	                                 args.putString("resource_type", Constants.HardwareType.BASE_STATIONS.toString()); 
+							args.putString("resource_type", Constants.HardwareType.BASE_STATIONS.toString()); 
 	                                 
-	                                 CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
-				                	 FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+							CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
+							FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
 				                	   
-				                	 fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
+							fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
 				       		 		   
-				                	 checkResourcesFragment.setArguments(args);
+							checkResourcesFragment.setArguments(args);
 				       		 		
-				       		 		 fragmentTransaction.addToBackStack(null);
-				       		 		 fragmentTransaction.commit();  
+							fragmentTransaction.addToBackStack(null);
+							fragmentTransaction.commit();  
 			                	   
-			                   }
-			                   else if (strText.equalsIgnoreCase(getResources().getString(R.string.channels_802_11a))){
+						} else if (strText.equalsIgnoreCase(getResources().getString(R.string.channels_802_11a))){
 			                	     checkAvailableResources(Constants.HardwareType.CHANNELS_802_11A);
 			                	   
 	                                 args.putString("resource_type", Constants.HardwareType.CHANNELS_802_11A.toString()); 
