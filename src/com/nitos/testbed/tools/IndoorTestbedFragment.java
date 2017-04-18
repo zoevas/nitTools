@@ -11,21 +11,21 @@ public class IndoorTestbedFragment extends Fragment {
 	
 	View rootView;
 	
-	 @Override
-	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-	        // Inflate the layout for this fragment
-		 rootView =  inflater.inflate(R.layout.indoor_testbed_fragment, container, false);
-		 return rootView;
-	    }
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		// Inflate the layout for this fragment
+		rootView =  inflater.inflate(R.layout.indoor_testbed_fragment, container, false);
+		return rootView;
+	}
 	 
-	 @Override
+	@Override
 	public void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
 		Log.i("IndoorTestbedFragment", "onPause");
 	}
 	 
-	 @Override
+	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
