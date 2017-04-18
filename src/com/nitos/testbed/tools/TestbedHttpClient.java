@@ -83,56 +83,55 @@ public class TestbedHttpClient {
 	
 	//Making http post request
 	public void setTestbedData(String path, String data) throws KeyStoreException, NoSuchAlgorithmException, CertificateException, UnrecoverableKeyException, IOException {
- 			 HttpURLConnection con = null;
-			 con = (HttpURLConnection) ( new URL(Constants.BASE_URL + path)).openConnection();
+ 		HttpURLConnection con = null;
+		con = (HttpURLConnection) ( new URL(Constants.BASE_URL + path)).openConnection();
 			
 			
-			/*  SSLSocketFactory sc = null;
-		  	  try {
-				  sc = getSocketFactoryPEM("/sdcard/Documents/user_cert.pem");
-			  } catch (Exception e) {
+		/*  SSLSocketFactory sc = null;
+			try {
+				sc = getSocketFactoryPEM("/sdcard/Documents/user_cert.pem");
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-		 	  }
+			}
 		    
-		      if (con instanceof HttpsURLConnection) {
-		    	  Log.i("HttpsURLConnection","mphka");
-		    	  ((HttpsURLConnection)con).setSSLSocketFactory(sc);
-		      }*/
+			if (con instanceof HttpsURLConnection) {
+				Log.i("HttpsURLConnection","mphka");
+				((HttpsURLConnection)con).setSSLSocketFactory(sc);
+			}*/
 		      
-		      // If you invoke the method setDoOutput(true) on the URLConnection, it will always use the POST method.
-		      con.setRequestMethod("POST");
-		      con.setDoInput(true);
-		      con.setDoOutput(true);
-		      con.setRequestProperty("Accept", "application/json");
-		      con.setRequestProperty("Content-Type", "application/json");
+			// If you invoke the method setDoOutput(true) on the URLConnection, it will always use the POST method.con.setRequestMethod("POST");
+			con.setDoInput(true);
+			con.setDoOutput(true);
+			con.setRequestProperty("Accept", "application/json");
+			con.setRequestProperty("Content-Type", "application/json");
 			
-	  		  Log.i("data", data);	
+			Log.i("data", data);	
 			
-	  		  OutputStream outputStream = con.getOutputStream();
-	  		  outputStream.write(data.getBytes());
-	  		  outputStream.flush();
+			OutputStream outputStream = con.getOutputStream();
+			outputStream.write(data.getBytes());
+			outputStream.flush();
 			
-	  		  Log.w("RESPONSE CODE", "code " + con.getResponseCode());
+			Log.w("RESPONSE CODE", "code " + con.getResponseCode());
 			
-			  //Read Error Messages			
-	  		  InputStream _is;
-	  		  if (con.getResponseCode() /100 == 2) {  
-	  			  _is = con.getInputStream();  
-	  		  } else {  
-	  			  _is = con.getErrorStream();  
+			//Read Error Messages			
+			InputStream _is;
+			if (con.getResponseCode() /100 == 2) {  
+					_is = con.getInputStream();  
+			} else {  
+					_is = con.getErrorStream();  
 	
-	  			  String result = getStringFromInputStream(_is);
-	  			  Log.i("Error != 2xx", result);
+				String result = getStringFromInputStream(_is);
+				Log.i("Error != 2xx", result);
 			    
-	  			  BufferedReader responseBuffer1 = new BufferedReader(new InputStreamReader((con.getErrorStream())));
+				BufferedReader responseBuffer1 = new BufferedReader(new InputStreamReader((con.getErrorStream())));
 				
-	  			  String output1;
-	  			  Log.i("TestbedHttpClient Error","Output error from Server:");
-	  			  while ((output1 = responseBuffer1.readLine()) != null) {
-	  				  Log.i("Output error",output1);
-	  			  }
-		  	  }
+				String output1;
+				Log.i("TestbedHttpClient Error","Output error from Server:");
+				while ((output1 = responseBuffer1.readLine()) != null) {
+					Log.i("Output error",output1);
+				}
+			}
 			
 			
 			if (con.getResponseCode() != 200) {
@@ -149,8 +148,6 @@ public class TestbedHttpClient {
 			}
 		
 			con.disconnect();
-		
-
 	}
 
 	
@@ -234,12 +231,10 @@ public class TestbedHttpClient {
 	 
 			String line;
 			try {
-	 
 				br = new BufferedReader(new InputStreamReader(is));
 				while ((line = br.readLine()) != null) {
 					sb.append(line);
-				}
-	 
+				}	 
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {
@@ -253,7 +248,6 @@ public class TestbedHttpClient {
 			}
 	 
 			return sb.toString();
-	 
 		}
 	
 }
