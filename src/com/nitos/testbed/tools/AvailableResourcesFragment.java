@@ -166,82 +166,72 @@ public class AvailableResourcesFragment extends Fragment  implements OnClickList
 							fragmentTransaction.addToBackStack(null);
 							fragmentTransaction.commit();  
 			                	   
-						} else if (strText.equalsIgnoreCase(getResources().getString(R.string.channels_802_11a))){
-			                	     checkAvailableResources(Constants.HardwareType.CHANNELS_802_11A);
-			                	   
-	                                 args.putString("resource_type", Constants.HardwareType.CHANNELS_802_11A.toString()); 
+						} else if (strText.equalsIgnoreCase(getResources().getString(R.string.channels_802_11a))) {
+							checkAvailableResources(Constants.HardwareType.CHANNELS_802_11A);
+							
+							args.putString("resource_type", Constants.HardwareType.CHANNELS_802_11A.toString()); 
 	                                 
-	                                 CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
-				                	 FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-				                	   
-				                	 fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
+							CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
+							FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+							fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
 				       		 		   
-				                	 checkResourcesFragment.setArguments(args);
+							checkResourcesFragment.setArguments(args);
 				       		 		
-				       		 		 fragmentTransaction.addToBackStack(null);
-				       		 		 fragmentTransaction.commit();  
-			                   }
-			                   else if (strText.equalsIgnoreCase(getResources().getString(R.string.channels_802_11bg))){
-			                	     checkAvailableResources(Constants.HardwareType.CHANNELS_802_11BG);
+							fragmentTransaction.addToBackStack(null);
+						} else if (strText.equalsIgnoreCase(getResources().getString(R.string.channels_802_11bg))){
+							checkAvailableResources(Constants.HardwareType.CHANNELS_802_11BG);
 				                	   
-	                                 args.putString("resource_type", Constants.HardwareType.CHANNELS_802_11BG.toString()); 
+							args.putString("resource_type", Constants.HardwareType.CHANNELS_802_11BG.toString()); 
 	                                 
-	                                 CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
-				                	 FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+							CheckResourcesFragment checkResourcesFragment = new CheckResourcesFragment();
+							FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
 				                	   
-				                	 fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
+							fragmentTransaction.replace(R.id.child_fragmentB,  checkResourcesFragment);
 				       		 		   
-				                	 checkResourcesFragment.setArguments(args);
+							checkResourcesFragment.setArguments(args);
 				       		 		
-				       		 		 fragmentTransaction.addToBackStack(null);
-				       		 		 fragmentTransaction.commit();  
-			                   }
-			                   itemClicked.setSelected(true);
-			            }
-			            
-				  });
+							fragmentTransaction.addToBackStack(null);
+							fragmentTransaction.commit();  
+						}
+						itemClicked.setSelected(true);
+					}
+				});
 		 		
+				Button btnReserve = (Button) slidingView.findViewById(R.id.btnReserveNodes);
+				btnReserve.setOnClickListener(this);
 		 		
-		 		Button btnReserve = (Button) slidingView.findViewById(R.id.btnReserveNodes);
-		 		btnReserve.setOnClickListener(this);
-		 		
-		 		return slidingView;
-	    	}
+				return slidingView;
+		}
 	 
 	 
-	 //This code is taken from stackOverflow. It fixes a bug that occurs in nested fragments.
-	    @Override
-	    public void onDetach() {
-	        super.onDetach();
+	//This code is taken from stackOverflow. It fixes a bug that occurs in nested fragments.
+	@Override
+	public void onDetach() {
+		super.onDetach();
 
-	        try {
-	            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-	            childFragmentManager.setAccessible(true);
-	            childFragmentManager.set(this, null);
-
-	        } catch (NoSuchFieldException e) {
-	            throw new RuntimeException(e);
-	        } catch (IllegalAccessException e) {
-	            throw new RuntimeException(e);
-	        }
-	    }
+		try {
+			Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+			childFragmentManager.set(this, null);
+		} catch (NoSuchFieldException e) {
+			throw new RuntimeException(e);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void onDestroy(){
+		super.onDestroy();
+	}
 	    
-	    public void onDestroy(){
-	    	super.onDestroy();
-	    
-	    	
-	    }
-	    
-	    public void onPause(){
-	    	super.onPause();
-	    	Log.i("AvailableResourcesFragment","onPause");
-	    	Log.i("AvailableResourcesFragment","onDestroy");
-	    	SharedPreferences nodesSharedPreferences =  getActivity().getSharedPreferences(Constants.CHECKBOXES_PREFERENCES,  Context.MODE_PRIVATE);
-	     	Editor editor =  nodesSharedPreferences.edit();
-	        editor.clear();
-	 	    editor.commit();
-	    	
-	    }
+	public void onPause(){
+		super.onPause();
+		Log.i("AvailableResourcesFragment","onPause");
+		Log.i("AvailableResourcesFragment","onDestroy");
+		SharedPreferences nodesSharedPreferences =  getActivity().getSharedPreferences(Constants.CHECKBOXES_PREFERENCES,  Context.MODE_PRIVATE);
+		Editor editor =  nodesSharedPreferences.edit();
+		editor.clear();
+		editor.commit();
+	}
 	 
 	 	@Override
 		public void onClick(View v) {
