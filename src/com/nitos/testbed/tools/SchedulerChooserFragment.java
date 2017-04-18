@@ -51,7 +51,7 @@ public  class SchedulerChooserFragment extends Fragment   implements OnClickList
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 	    	
-	    	schedulerChooserView= inflater.inflate(R.layout.scheduler_chooser_fragment, container,false);
+	    		schedulerChooserView= inflater.inflate(R.layout.scheduler_chooser_fragment, container,false);
 			//get global data
 			appState = ((GlobalData)getActivity().getApplicationContext()); 
 			
@@ -64,61 +64,58 @@ public  class SchedulerChooserFragment extends Fragment   implements OnClickList
 			Button btnDate = (Button) schedulerChooserView.findViewById(R.id.buttonSelectDate);
 			Button btnTime = (Button) schedulerChooserView.findViewById(R.id.buttonSelectTime);
 			Button btnCheckAvailableResources = (Button)schedulerChooserView.findViewById(R.id.btnCheckAvailableResources);
-		    btnDate.setOnClickListener(this);
-		    btnTime.setOnClickListener(this);
-		    btnCheckAvailableResources.setOnClickListener(this);
+		 	btnDate.setOnClickListener(this);
+		    	btnTime.setOnClickListener(this);
+		    	btnCheckAvailableResources.setOnClickListener(this);
 		    
-		    String duration[] = {"0.5","1","2","2.5","3", "3.5","4"};
+			String duration[] = {"0.5","1","2","2.5","3", "3.5","4"};
 		    
-		    spinnerDuration = (Spinner)schedulerChooserView.findViewById(R.id.spinnerDuration);
-		    ArrayAdapter<String> spinnerAdapter;
-		    spinnerAdapter= new ArrayAdapter<String>(getActivity().getBaseContext(), R.layout.spinner_item, duration);
-		    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		    spinnerDuration.setAdapter(spinnerAdapter);
+			spinnerDuration = (Spinner)schedulerChooserView.findViewById(R.id.spinnerDuration);
+			ArrayAdapter<String> spinnerAdapter;
+			spinnerAdapter= new ArrayAdapter<String>(getActivity().getBaseContext(), R.layout.spinner_item, duration);
+			spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			spinnerDuration.setAdapter(spinnerAdapter);
 		
 		    
-		    spinnerDuration.setOnItemSelectedListener(new OnItemSelectedListener()
-		    {
-                public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                                int arg2, long arg3)
-                {
-     	 	 	     appState.setDuration(Float.parseFloat(spinnerDuration.getSelectedItem().toString()));                   
-                }
-                public void onNothingSelected(AdapterView<?> arg0)
-                {
+			spinnerDuration.setOnItemSelectedListener(new OnItemSelectedListener()
+			{
+				public void onItemSelected(AdapterView<?> arg0, View arg1,
+ 									int arg2, long arg3) {
+					appState.setDuration(Float.parseFloat(spinnerDuration.getSelectedItem().toString()));                   
+				}
+				public void onNothingSelected(AdapterView<?> arg0) {
                                 // TODO Auto-generated method stub                 
-                }
-		    });
+				}
+			});
 		    
 			return schedulerChooserView;
 		}
 	    
 	    
 	   
-	    
-	    // display current date and time
-	 	  public void showCurrentLocalDateTime() {
-	 		 TextView textViewLocalTime = (TextView) schedulerChooserView.findViewById(R.id.textViewLocalTime);
+		// display current date and time
+		public void showCurrentLocalDateTime() {
+			TextView textViewLocalTime = (TextView) schedulerChooserView.findViewById(R.id.textViewLocalTime);
 	 		 
-	 		 DateTime localDateTime = new DateTime();
+			DateTime localDateTime = new DateTime();
 	 		 
-	 		 Log.i("localDatetime", localDateTime.toString());
+			Log.i("localDatetime", localDateTime.toString());
 	 		 
-	 		 //We should split the date and time with T and +
-	 		 String splits[] = localDateTime.toString().split("T");
-	 		 String localDate = splits[0] + " ";
+			//We should split the date and time with T and +
+			String splits[] = localDateTime.toString().split("T");
+			String localDate = splits[0] + " ";
 	 		 
-	 		 Log.i("splits 1", splits[1]);
-	 		 String splitsTimeWithoutZone[] = splits[1].split("\\+");
-	 		 String splitsTimeWithoutSecs[] = splitsTimeWithoutZone[0].split("\\.");
-	 		 String localTime = splitsTimeWithoutSecs[0];
+			Log.i("splits 1", splits[1]);
+			String splitsTimeWithoutZone[] = splits[1].split("\\+");
+			String splitsTimeWithoutSecs[] = splitsTimeWithoutZone[0].split("\\.");
+			String localTime = splitsTimeWithoutSecs[0];
 	 		 
-	 		 textViewLocalTime.setText(localDate + localTime);
-	 	  }
+			textViewLocalTime.setText(localDate + localTime);
+		}
 	    	       
-	      // display current date
-	 	  public void showCurrentDateOnView() {
-	 	       	textDisplayDate = (TextView) schedulerChooserView.findViewById(R.id.textDate);
+		// display current date
+		public void showCurrentDateOnView() {
+textDisplayDate = (TextView) schedulerChooserView.findViewById(R.id.textDate);
 	
 	 		   // Use the current date as the default date in the picker
 		        DateTime dt = new DateTime();
