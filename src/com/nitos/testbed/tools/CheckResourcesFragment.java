@@ -125,36 +125,36 @@ public class CheckResourcesFragment extends Fragment {
 		    	    
 				break;
 			}
-		     case USRP:{
-		    	    appState.clearUsrpCheckBoxes();
-		    	    currentFragmentNodes = appState.getUsrpAvailableNodes();
-		    	    Set<String> keys = currentFragmentNodes.keySet();
+			case USRP:{
+				appState.clearUsrpCheckBoxes();
+				currentFragmentNodes = appState.getUsrpAvailableNodes();
+				Set<String> keys = currentFragmentNodes.keySet();
 		    
-		    	    LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
-		    	    int checkBoxIndex = 0;
-		    	    for(String key: keys){
-		    	    	String node_name = key;
+				LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
+				int checkBoxIndex = 0;
+				for(String key: keys){
+					String node_name = key;
 		    	    	
-		    	    	appState.setUsrpCheckBoxes(new CheckBox(checkNodesView.getContext()));
-			        	appState.setUsrpCheckBoxesText(checkBoxIndex, node_name);
+					appState.setUsrpCheckBoxes(new CheckBox(checkNodesView.getContext()));
+					appState.setUsrpCheckBoxesText(checkBoxIndex, node_name);
 			        	
-			        	//Restore the CheckBoxes state
-			        	if (nodesSharedPreferences.contains(node_name)) {
-				        	boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
+					//Restore the CheckBoxes state
+					if (nodesSharedPreferences.contains(node_name)) {
+						boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
 				        
-				        	if (checkBoxValue) {
-				        		appState.getUsrpCheckBoxes().get(checkBoxIndex).setChecked(true);
-				        	} else {
-				        		appState.getUsrpCheckBoxes().get(checkBoxIndex).setChecked(false);
-				        	}
-				        }
+						if (checkBoxValue) {
+							appState.getUsrpCheckBoxes().get(checkBoxIndex).setChecked(true);
+						} else {
+							appState.getUsrpCheckBoxes().get(checkBoxIndex).setChecked(false);
+						}
+					}
 			        
-				       ll.addView(appState.getUsrpCheckBoxes().get(checkBoxIndex));
-				       checkBoxIndex++;
-		    	    }
+					ll.addView(appState.getUsrpCheckBoxes().get(checkBoxIndex));
+					checkBoxIndex++;
+				}
 		    	    
-		    	 break;
-		     }
+				break;
+			}
 		     case  DISKLESS:{
 		    	 appState.clearDisklessCheckBoxes();
 		    	    currentFragmentNodes = appState.getDisklessAvailableNodes();
