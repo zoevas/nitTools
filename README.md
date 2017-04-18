@@ -47,18 +47,20 @@ and making GET and POST requests.
 ## Screenshots
 [<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/login_screen.png" align="left"
 width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/login_screen.png)
-[<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/main_menu_screen.png
-" align="left"
-width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/main_menu_screen.png
+
+[<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/main_menu_screen.png" align="left" width="200"    hspace="10" vspace="10"> ](https://github.com/zoevas/nitTools/blob/master/read_me_images/main_menu_screen.png
 )
+
 [<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/reservation.png" align="left"
 width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/reservation.png)
+
 [<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/date_time.png" align="left"
 width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/date_time.png)
+
 [<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/outdoor.png" align="left"
-width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/outdoor.png)
-[<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png
-" align="left"
-width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png)
+width="200" hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/outdoor.png)
+
+[<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png" align="left" width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/available%20resources.png)
+
 [<img src="https://github.com/zoevas/nitTools/blob/master/read_me_images/reservation_status_user.png" align="left"
-width="200"    hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/reservation_status_user.png)
+width="200" hspace="10" vspace="10">](https://github.com/zoevas/nitTools/blob/master/read_me_images/reservation_status_user.png)
