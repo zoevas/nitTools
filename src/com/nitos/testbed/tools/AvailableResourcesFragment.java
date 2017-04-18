@@ -304,125 +304,124 @@ public class AvailableResourcesFragment extends Fragment  implements OnClickList
 	 				  }
 	 				   
 	 				  if(available) {
-				String node_name = entry.getKey();
-							String uuid = resourcesData.getUUID();
-							appState.setGridAvailableNodes(node_name, uuid);
-	 				  }
-	 			   }
+						String node_name = entry.getKey();
+						String uuid = resourcesData.getUUID();
+						appState.setGridAvailableNodes(node_name, uuid);
+					}
+				}
 
-	 			   break;	
-	 		  case USRP:
-	 			   Log.i("Check Available Nodes","USRP Nodes");
-	 			   HashMap<String, ResourcesData> usrpNodes = appState.getUsrpNodes();
-	 			   appState.clearUsrpAvailableNodes();
+				break;	
+			case USRP:
+				Log.i("Check Available Nodes","USRP Nodes");
+				HashMap<String, ResourcesData> usrpNodes = appState.getUsrpNodes();
+				appState.clearUsrpAvailableNodes();
 	 		
-	 			   for (Map.Entry<String,ResourcesData>entry:usrpNodes.entrySet()) {
-	 				   Log.i("Available Nodes", "" + entry.getKey());
+				for (Map.Entry<String,ResourcesData>entry:usrpNodes.entrySet()) {
+					Log.i("Available Nodes", "" + entry.getKey());
 	 				   
-	 				   ResourcesData resourcesData = entry.getValue();
-	 				   ArrayList<Reservation> reservations = resourcesData.getReservations();
+					ResourcesData resourcesData = entry.getValue();
+					ArrayList<Reservation> reservations = resourcesData.getReservations();
 	 				   
-	 				   boolean available = true;
+					boolean available = true;
 	 				   
-	 				   for(int i = 0; i < reservations.size(); i++){
-	 					   Reservation reservation_i = reservations.get(i);
-	 					   available = intersectDateIntervals(reservation_i);
-	 					   if(!available)
-	 						      break; 
-	 				   }
+					for(int i = 0; i < reservations.size(); i++) {
+						Reservation reservation_i = reservations.get(i);
+						available = intersectDateIntervals(reservation_i);
+						if(!available)
+							break; 
+					}
 	 				   
-	 				  if(available) {
-	 					 String node_name = entry.getKey();
-	 					 String uuid = resourcesData.getUUID();
-	 				     appState.setUsrpAvailableNodes(node_name, uuid);
-	 				  }
-	 			   }
+					if(available) {
+						String node_name = entry.getKey();
+						String uuid = resourcesData.getUUID();
+						appState.setUsrpAvailableNodes(node_name, uuid);
+					}
+				}
 
-	 			   break;
-	 		  case DISKLESS:
-	 			   Log.i("Check Available Nodes","Diskless Nodes");
-	 			   HashMap<String, ResourcesData> disklessNodes = appState.getDisklessNodes();
-	 			   appState.clearDisklessAvailableNodes();
+				break;
+			case DISKLESS:
+				Log.i("Check Available Nodes","Diskless Nodes");
+				HashMap<String, ResourcesData> disklessNodes = appState.getDisklessNodes();
+				appState.clearDisklessAvailableNodes();
 	 		
-	 			   for (Map.Entry<String, ResourcesData>entry:disklessNodes.entrySet()) {
-	 				   Log.i("Available Nodes", "" + entry.getKey());
+				for (Map.Entry<String, ResourcesData>entry:disklessNodes.entrySet()) {
+					Log.i("Available Nodes", "" + entry.getKey());
 	 				   
-	 				   ResourcesData resourcesData = entry.getValue();
-	 				   ArrayList<Reservation> reservations = resourcesData.getReservations();
+					ResourcesData resourcesData = entry.getValue();
+					ArrayList<Reservation> reservations = resourcesData.getReservations();
 	 				   
-	 				   boolean available = true;
+					boolean available = true;
 	 				   
-	 				   for(int i = 0; i < reservations.size(); i++){
-	 					   Reservation reservation_i = reservations.get(i);
-	 					   available = intersectDateIntervals(reservation_i);
-	 					   if(!available)
-	 						      break; 
-	 				   }
+					for(int i = 0; i < reservations.size(); i++){
+						Reservation reservation_i = reservations.get(i);
+						available = intersectDateIntervals(reservation_i);
+						if(!available)
+							break; 
+					}
 	 				   
-	 				  if(available) {
-	 					 String node_name = entry.getKey();
-	 					 String uuid = resourcesData.getUUID();
-	 				     appState.setDisklessAvailableNodes(node_name, uuid);
-	 				  }
-	 			   }
+					if(available) {
+						String node_name = entry.getKey();
+						String uuid = resourcesData.getUUID();
+					}
+				}
 
-	 			   break;
-	 		    case ICARUS:
-	 			   Log.i("Check Available Nodes","Icarus Nodes");
-	 			   HashMap<String, ResourcesData> icarusNodes = appState.getIcarusNodes();
-	 			   appState.clearIcarusAvailableNodes();
+				break;
+			case ICARUS:
+				Log.i("Check Available Nodes","Icarus Nodes");
+				HashMap<String, ResourcesData> icarusNodes = appState.getIcarusNodes();
+				appState.clearIcarusAvailableNodes();
 	 		
-	 			   for (Map.Entry<String, ResourcesData>entry:icarusNodes.entrySet()) {
-	 				   Log.i("Available Nodes", "" + entry.getKey());
+				for (Map.Entry<String, ResourcesData>entry:icarusNodes.entrySet()) {
+					Log.i("Available Nodes", "" + entry.getKey());
 	 				   
-	 				   ResourcesData resourcesData = entry.getValue();
-	 				   ArrayList<Reservation> reservations = resourcesData.getReservations();
+					ResourcesData resourcesData = entry.getValue();
+					ArrayList<Reservation> reservations = resourcesData.getReservations();
 	 				   
-	 				   boolean available = true;
+					boolean available = true;
 	 				   
-	 				   for(int i = 0; i < reservations.size(); i++){
-	 					   Reservation reservation_i = reservations.get(i);
-	 					   available = intersectDateIntervals(reservation_i);
-	 					   if(!available)
-	 						      break; 
-	 				   }
+					for(int i = 0; i < reservations.size(); i++){
+						Reservation reservation_i = reservations.get(i);
+						available = intersectDateIntervals(reservation_i);
+						if(!available)
+						break; 
+					}
 	 				   
-	 				  if(available) {
-	 					 String node_name = entry.getKey();
-	 					 String uuid = resourcesData.getUUID();
-	 				     appState.setIcarusAvailableNodes(node_name, uuid);
-	 				  }
-	 			   }
+					if(available) {
+						String node_name = entry.getKey();
+						String uuid = resourcesData.getUUID();
+						appState.setIcarusAvailableNodes(node_name, uuid);
+					}
+				}
 
-	 			   break;
-	 		   case BASE_STATIONS:
-	 			   Log.i("Check Available Nodes","Base Stations");
-	 			   HashMap<String, ResourcesData> baseStationsNodes = appState.getBaseStations();
-	 			   appState.clearBaseStationsAvailable();
+				break;
+			case BASE_STATIONS:
+				Log.i("Check Available Nodes","Base Stations");
+				HashMap<String, ResourcesData> baseStationsNodes = appState.getBaseStations();
+				appState.clearBaseStationsAvailable();
 	 		
-	 			   for (Map.Entry<String, ResourcesData>entry:baseStationsNodes.entrySet()) {
-	 				   Log.i("Available Nodes", "" + entry.getKey());
+				for (Map.Entry<String, ResourcesData>entry:baseStationsNodes.entrySet()) {
+					Log.i("Available Nodes", "" + entry.getKey());
 	 				   
-	 				   ResourcesData resourcesData = entry.getValue();
-	 				   ArrayList<Reservation> reservations = resourcesData.getReservations();
+					ResourcesData resourcesData = entry.getValue();
+					ArrayList<Reservation> reservations = resourcesData.getReservations();
 	 				   
-	 				   boolean available = true;
+					boolean available = true;
 	 				   
-	 				   for(int i = 0; i < reservations.size(); i++){
-	 					   Reservation reservation_i = reservations.get(i);
-	 					   available = intersectDateIntervals(reservation_i);
-	 					   if(!available)
-	 						      break; 
-	 				   }
+					for(int i = 0; i < reservations.size(); i++){
+						Reservation reservation_i = reservations.get(i);
+						available = intersectDateIntervals(reservation_i);
+						if(!available)
+							break; 
+					}
 	 				   
-	 				  if(available) {
-	 					 String node_name = entry.getKey();
-	 					 String uuid = resourcesData.getUUID();
-	 				     appState.setBaseStationsAvailable(node_name, uuid);
-	 				  }
-	 			   }
-
-	 			   break;
+					if(available) {
+						String node_name = entry.getKey();
+						String uuid = resourcesData.getUUID();
+						appState.setBaseStationsAvailable(node_name, uuid);
+					}
+				}
+				
+				break;
 	 		   case CHANNELS_802_11A:
 	 			   Log.i("Check Available Channels bg","Channels bgs");
 	 			   HashMap<String, ResourcesData> channels_802_11a = appState.getChannels802_11a();
