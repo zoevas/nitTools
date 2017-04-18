@@ -9,7 +9,7 @@ From the left-hand side an Android device (not necessarily a smartphone, it coul
 application already installed communicates with the web service using a special RESTful API. The application sends HTTP requests with GET/PUT/POST/DELETE method headers and receives well formatted JSON responses. REST objects can be exchanged
 both ways.
 
-![alt tag]()
+![alt tag](https://github.com/zoevas/nitTools/blob/master/System%20architecture.png)
 
 
 
