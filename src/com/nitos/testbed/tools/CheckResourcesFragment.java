@@ -155,176 +155,175 @@ public class CheckResourcesFragment extends Fragment {
 		    	    
 				break;
 			}
-		     case  DISKLESS:{
-		    	 appState.clearDisklessCheckBoxes();
-		    	    currentFragmentNodes = appState.getDisklessAvailableNodes();
-		    	    Set<String> keys = currentFragmentNodes.keySet();
+			case  DISKLESS:{
+				appState.clearDisklessCheckBoxes();
+				currentFragmentNodes = appState.getDisklessAvailableNodes();
+				Set<String> keys = currentFragmentNodes.keySet();
 		    
-		    	    LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
-		    	    int checkBoxIndex = 0;
-		    	    for(String key: keys){
-		    	    	String node_name = key;
+				LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
+				int checkBoxIndex = 0;
+				for(String key: keys){
+					String node_name = key;
 		    	    	
-		    	    	appState.setDisklessCheckBoxes(new CheckBox(checkNodesView.getContext()));
-			        	appState.setDisklessCheckBoxesText(checkBoxIndex, node_name);
+					appState.setDisklessCheckBoxes(new CheckBox(checkNodesView.getContext()));
+					appState.setDisklessCheckBoxesText(checkBoxIndex, node_name);
 			        	
-			        	//Restore the CheckBoxes state
-			        	if (nodesSharedPreferences.contains(node_name)) {
-				        	boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
+					//Restore the CheckBoxes state
+					if (nodesSharedPreferences.contains(node_name)) {
+						boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
 				        
-				        	if (checkBoxValue) {
-				        		appState.getDisklessCheckBoxes().get(checkBoxIndex).setChecked(true);
-				        	} else {
-				        		appState.getDisklessCheckBoxes().get(checkBoxIndex).setChecked(false);
-				        	}
-				        }
+						if (checkBoxValue) {
+							appState.getDisklessCheckBoxes().get(checkBoxIndex).setChecked(true);
+						} else {
+							appState.getDisklessCheckBoxes().get(checkBoxIndex).setChecked(false);
+						}
+					}
 			        
-				       ll.addView(appState.getDisklessCheckBoxes().get(checkBoxIndex));
-				       checkBoxIndex++;
-		    	    }
+					ll.addView(appState.getDisklessCheckBoxes().get(checkBoxIndex));
+					checkBoxIndex++;
+				}
 		    	    
-		    	 break;
-		     }
-		     case ICARUS:{
-		    	 appState.clearIcarusCheckBoxes();
-		    	    currentFragmentNodes = appState.getIcarusAvailableNodes();
-		    	    Set<String> keys = currentFragmentNodes.keySet();
+				break;
+			}
+			case ICARUS:{
+				appState.clearIcarusCheckBoxes();
+				currentFragmentNodes = appState.getIcarusAvailableNodes();
+				Set<String> keys = currentFragmentNodes.keySet();
 		    
-		    	    LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
-		    	    int checkBoxIndex = 0;
-		    	    for(String key: keys){
-		    	    	String node_name = key;
+				LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
+				int checkBoxIndex = 0;
+				for(String key: keys){
+					String node_name = key;
 		    	    	
-		    	    	appState.setIcarusCheckBoxes(new CheckBox(checkNodesView.getContext()));
-			        	appState.setIcarusCheckBoxesText(checkBoxIndex, node_name);
+					appState.setIcarusCheckBoxes(new CheckBox(checkNodesView.getContext()));
+					appState.setIcarusCheckBoxesText(checkBoxIndex, node_name);
 			        	
-			        	//Restore the CheckBoxes state
-			        	if (nodesSharedPreferences.contains(node_name)) {
-				        	boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
+					//Restore the CheckBoxes state
+					if (nodesSharedPreferences.contains(node_name)) {
+						boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
 				        
-				        	if (checkBoxValue) {
-				        		appState.getIcarusCheckBoxes().get(checkBoxIndex).setChecked(true);
-				        	} else {
-				        		appState.getIcarusCheckBoxes().get(checkBoxIndex).setChecked(false);
-				        	}
-				        }
+						if (checkBoxValue) {
+							appState.getIcarusCheckBoxes().get(checkBoxIndex).setChecked(true);
+						} else {
+							appState.getIcarusCheckBoxes().get(checkBoxIndex).setChecked(false);
+						}
+					}
 			        
-				       ll.addView(appState.getIcarusCheckBoxes().get(checkBoxIndex));
-				       checkBoxIndex++;
-		    	    }
+					ll.addView(appState.getIcarusCheckBoxes().get(checkBoxIndex));
+					checkBoxIndex++;
+				}
 		    	    
-		    	 break;
-		     }
-		     case BASE_STATIONS:{
-		 	        appState.clearBaseStationCheckBoxes();
-		    	    currentFragmentNodes = appState.getBaseStationsAvailable();
-		    	    Set<String> keys = currentFragmentNodes.keySet();
+				break;
+			}
+			case BASE_STATIONS:{
+				appState.clearBaseStationCheckBoxes();
+				currentFragmentNodes = appState.getBaseStationsAvailable();
+				Set<String> keys = currentFragmentNodes.keySet();
 		    
-		    	    LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
-		    	    int checkBoxIndex = 0;
-		    	    for(String key: keys){
-		    	    	String node_name = key;
+				LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
+				int checkBoxIndex = 0;
+				for(String key: keys){
+					String node_name = key;
 		    	    	
-		    	    	appState.setBaseStationCheckBoxes(new CheckBox(checkNodesView.getContext()));
-			        	appState.setBaseStationCheckBoxesText(checkBoxIndex, node_name);
+					appState.setBaseStationCheckBoxes(new CheckBox(checkNodesView.getContext()));
+					appState.setBaseStationCheckBoxesText(checkBoxIndex, node_name);
 			        	
-			        	//Restore the CheckBoxes state
-			        	if (nodesSharedPreferences.contains(node_name)) {
-				        	boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
+					//Restore the CheckBoxes state
+					if (nodesSharedPreferences.contains(node_name)) {
+						boolean checkBoxValue = nodesSharedPreferences.getBoolean(node_name, false);
 				        
-				        	if (checkBoxValue) {
-				        		appState.getBaseStationCheckBoxes().get(checkBoxIndex).setChecked(true);
-				        	} else {
+						if (checkBoxValue) {
+							appState.getBaseStationCheckBoxes().get(checkBoxIndex).setChecked(true);
+						} else {
 				        		appState.getBaseStationCheckBoxes().get(checkBoxIndex).setChecked(false);
-				        	}
-				        }
+						}
+					}
 			        
-				       ll.addView(appState.getBaseStationCheckBoxes().get(checkBoxIndex));
-				       checkBoxIndex++;
-		    	    }
+					ll.addView(appState.getBaseStationCheckBoxes().get(checkBoxIndex));
+					checkBoxIndex++;
+				}
 		    	    
-		    	    break;
-		     }
-		     case CHANNELS_802_11A:{
-		 	        appState.clearChannels_802_11a_checkBoxes();
-		    	    currentFragmentNodes = appState.getChannels_802_11a_available();
-		    	    Set<String> keys = currentFragmentNodes.keySet();
+				break;
+			}
+			case CHANNELS_802_11A:{
+				appState.clearChannels_802_11a_checkBoxes();
+				currentFragmentNodes = appState.getChannels_802_11a_available();
+				Set<String> keys = currentFragmentNodes.keySet();
 		    
-		    	    LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
-		    	    int checkBoxIndex = 0;
-		    	    for(String key: keys){
-		    	    	String channel_name = key;
+				LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
+				int checkBoxIndex = 0;
+				for(String key: keys){
+					String channel_name = key;
 		    	    	
-		    	    	appState.setChannels_802_11a_checkBoxes(new CheckBox(checkNodesView.getContext()));
-			        	appState.setChannels_802_11a_checkBoxesText(checkBoxIndex, channel_name);
+					appState.setChannels_802_11a_checkBoxes(new CheckBox(checkNodesView.getContext()));
+					appState.setChannels_802_11a_checkBoxesText(checkBoxIndex, channel_name);
 			        	
-			        	//Restore the CheckBoxes state
-			        	if (nodesSharedPreferences.contains(channel_name)) {
-				        	boolean checkBoxValue = nodesSharedPreferences.getBoolean(channel_name, false);
+					//Restore the CheckBoxes state
+					if (nodesSharedPreferences.contains(channel_name)) {
+						boolean checkBoxValue = nodesSharedPreferences.getBoolean(channel_name, false);
 				        
-				        	if (checkBoxValue) {
-				        		appState.getChannels_802_11a_checkBoxes().get(checkBoxIndex).setChecked(true);
-				        	} else {
-				        		appState.getChannels_802_11a_checkBoxes().get(checkBoxIndex).setChecked(false);
-				        	}
-				        }
+						if (checkBoxValue) {
+							appState.getChannels_802_11a_checkBoxes().get(checkBoxIndex).setChecked(true);
+						} else {
+							appState.getChannels_802_11a_checkBoxes().get(checkBoxIndex).setChecked(false);
+						}
+					}
 			        
-				       ll.addView(appState.getChannels_802_11a_checkBoxes().get(checkBoxIndex));
-				       checkBoxIndex++;
-		    	    }
+					ll.addView(appState.getChannels_802_11a_checkBoxes().get(checkBoxIndex));
+					checkBoxIndex++;
+				}
 		    	    
-		    	    break;
-		     }
-		     case CHANNELS_802_11BG:{
-		 	        appState.clearChannels_802_11bg_checkBoxes();
-		    	    currentFragmentNodes = appState.getChannels_802_11bg_available();
-		    	    Set<String> keys = currentFragmentNodes.keySet();
+				break;
+			}
+			case CHANNELS_802_11BG:{
+				appState.clearChannels_802_11bg_checkBoxes();
+				currentFragmentNodes = appState.getChannels_802_11bg_available();
+				Set<String> keys = currentFragmentNodes.keySet();
 		    
-		    	    LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
-		    	    int checkBoxIndex = 0;
-		    	    for(String key: keys){
-		    	    	String channel_name = key;
+				LinearLayout ll = (LinearLayout)checkNodesView.findViewById(R.id.child_scrollView);
+				int checkBoxIndex = 0;
+				for(String key: keys){
+					String channel_name = key;
 		    	    	
-		    	    	appState.setChannels_802_11bg_checkBoxes(new CheckBox(checkNodesView.getContext()));
-			        	appState.setChannels_802_11bg_checkBoxesText(checkBoxIndex, channel_name);
+					appState.setChannels_802_11bg_checkBoxes(new CheckBox(checkNodesView.getContext()));
+					appState.setChannels_802_11bg_checkBoxesText(checkBoxIndex, channel_name);
 			        	
-			        	//Restore the CheckBoxes state
-			        	if (nodesSharedPreferences.contains(channel_name)) {
-				        	boolean checkBoxValue = nodesSharedPreferences.getBoolean(channel_name, false);
+					//Restore the CheckBoxes state
+					if (nodesSharedPreferences.contains(channel_name)) {
+						boolean checkBoxValue = nodesSharedPreferences.getBoolean(channel_name, false);
 				        
-				        	if (checkBoxValue) {
-				        		appState.getChannels_802_11bg_checkBoxes().get(checkBoxIndex).setChecked(true);
-				        	} else {
-				        		appState.getChannels_802_11bg_checkBoxes().get(checkBoxIndex).setChecked(false);
-				        	}
-				        }
+						if (checkBoxValue) {
+							appState.getChannels_802_11bg_checkBoxes().get(checkBoxIndex).setChecked(true);
+						} else {
+							appState.getChannels_802_11bg_checkBoxes().get(checkBoxIndex).setChecked(false);
+						}
+					}
 			        
-				       ll.addView(appState.getChannels_802_11bg_checkBoxes().get(checkBoxIndex));
-				       checkBoxIndex++;
-		    	    }
+					ll.addView(appState.getChannels_802_11bg_checkBoxes().get(checkBoxIndex));
+					checkBoxIndex++;
+				}
 		    	    
-		    	    break;
-		     }
-		     default:
-		    	 break;
+				break;
+			}
+			default:
+				break;
 		 	
-		 }
+		}
 		 
-	 }
+	}
 	
 	
 	 
-	 public void onPause(){
+	public void onPause(){
 		 
-		 super.onPause();
-		 Log.i("CheckNodesFRagment","onPause " + resource_type.toString());
-		 Editor editor =  nodesSharedPreferences.edit();
-		 Set<String> keys = currentFragmentNodes.keySet();
+		super.onPause();
+		Log.i("CheckNodesFRagment","onPause " + resource_type.toString());
+		Editor editor =  nodesSharedPreferences.edit();
+		Set<String> keys = currentFragmentNodes.keySet();
 		 
-		 //In this method we store the state of checkboxes
-		 switch (resource_type)	{
-
-		 	case ORBIT: {
+		//In this method we store the state of checkboxes
+		switch (resource_type)	{
+			case ORBIT: {
 		 		 int checkBoxIndex = 0;
 		 		 for(String key: keys) {
 		 			editor.putBoolean(key, appState.getOrbitCheckBoxes().get(checkBoxIndex).isChecked());
@@ -346,7 +345,7 @@ public class CheckResourcesFragment extends Fragment {
 				 int checkBoxIndex = 0;
 		 		 for(String key: keys) {
 		 			editor.putBoolean(key, appState.getUsrpCheckBoxes().get(checkBoxIndex).isChecked());
-		 			checkBoxIndex++;
+					checkBoxIndex++;
 		 		 }
 		 	     editor.commit();
 			     break;
@@ -400,42 +399,41 @@ public class CheckResourcesFragment extends Fragment {
 			   	 break;
 		 }
 		
-	 }
+	}
 	 
-  public void onStart(){
-	     super.onStart();
-	     Log.i("CheckNodesFragment", "onSTart");
-  }
+	public void onStart(){
+		super.onStart();
+		Log.i("CheckNodesFragment", "onSTart");
+ 	}
 	 
-  public void onAttach(Activity mActivity){
-		 super.onAttach(mActivity);
-		 Log.i("CheckNodesFRagment","onAttach");
-	 }
-  public void onActivityCreated(Bundle mArguments){
-		 super.onActivityCreated(mArguments);
-		 Log.i("CheckNodesFRagment","onActivityCreated");
-	 }
+	public void onAttach(Activity mActivity){
+		super.onAttach(mActivity);
+		Log.i("CheckNodesFRagment","onAttach");
+	}
+	
+	public void onActivityCreated(Bundle mArguments){
+		super.onActivityCreated(mArguments);
+		Log.i("CheckNodesFRagment","onActivityCreated");
+	}
 	 
   
-  public void onStop(){
-	     super.onStop();
-	     Log.i("CheckNodesFragment", "onStop");
-  }	 
- 
+ 	public void onStop(){
+		super.onStop();
+		Log.i("CheckNodesFragment", "onStop");
+	}	 
+  
+	public void onDestroy(){
+		super.onDestroy();	 
+		Log.i("onDestroy", "onDestroy");
+	} 
 	 
-  public void onDestroy(){
-		 super.onDestroy();	 
-	     Log.i("onDestroy", "onDestroy");
-		
-  } 
-	 
-  public void onDestroyView(){
-		 super.onDestroyView();	 
-		 Log.i("onDestroyView", "onDestroyView");
-} 
+	public void onDestroyView(){
+		super.onDestroyView();	 
+		Log.i("onDestroyView", "onDestroyView");
+	} 
 
-   public void onDetach(){
-		 super.onDetach();
-		 Log.i("onDetach", "onDetach");
-   }
+	public void onDetach(){
+		super.onDetach();
+		Log.i("onDetach", "onDetach");
+	}
 }
